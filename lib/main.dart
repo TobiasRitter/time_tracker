@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,20 +11,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Time Tracker',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        textTheme: const TextTheme(
+          headlineLarge: TextStyle(
+            fontSize: 200,
+          ),
+        ),
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          secondary: const Color.fromARGB(255, 255, 0, 96),
+          brightness: Brightness.dark,
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -62,24 +69,33 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     return Scaffold(
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              '01:53',
-              style: Theme.of(context).textTheme.headlineLarge,
+            Expanded(
+              child: Center(
+                child: AutoSizeText(
+                  '01:53',
+                  style: Theme.of(context).textTheme.headlineLarge,
+                  maxLines: 1,
+                ),
+              ),
+            ),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  FloatingActionButton.large(
+                    onPressed: _toggleRunning,
+                    child: AnimatedIcon(
+                      icon: AnimatedIcons.play_pause,
+                      progress: _animation,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton.large(
-        onPressed: _toggleRunning,
-        tooltip: 'Increment',
-        child: AnimatedIcon(
-          icon: AnimatedIcons.play_pause,
-          progress: _animation,
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
