@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Time Tracker',
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.black,
-        iconTheme: IconThemeData(color: Colors.white38, size: 32.0),
+        iconTheme: IconThemeData(color: Colors.white30, size: 32.0),
         textTheme: const TextTheme(
             headlineLarge: TextStyle(
               fontSize: 10000,
@@ -22,13 +22,13 @@ class MyApp extends StatelessWidget {
             ),
             bodyLarge: const TextStyle(
               fontSize: 20,
-              color: Colors.white70,
+              color: Colors.white60,
             ),
             bodyMedium: const TextStyle(
-              color: Colors.white38,
+              color: Colors.white30,
             )),
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: Colors.white12,
+          primary: Colors.blueAccent,
           secondary: const Color.fromARGB(255, 255, 0, 96),
           brightness: Brightness.dark,
         ),
@@ -77,18 +77,16 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(64.0),
         child: Column(
           children: <Widget>[
             Expanded(
               child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(128.0),
-                  child: AutoSizeText(
-                    '01:53',
-                    style: Theme.of(context).textTheme.headlineLarge,
-                    maxLines: 1,
-                  ),
+                child: AutoSizeText(
+                  '01:53',
+                  style: Theme.of(context).textTheme.headlineLarge,
+                  maxLines: 1,
                 ),
               ),
             ),
@@ -113,6 +111,29 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                         progress: _animation,
                       ),
                     ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      FloatingActionButton.extended(
+                        backgroundColor: Colors.transparent,
+                        onPressed: null,
+                        label: Text("Edit"),
+                        icon: Icon(Icons.edit_outlined),
+                      ),
+                      FloatingActionButton.extended(
+                        backgroundColor: Colors.transparent,
+                        onPressed: null,
+                        label: Text("Export"),
+                        icon: Icon(Icons.import_export_outlined),
+                      ),
+                      FloatingActionButton.extended(
+                        backgroundColor: Colors.transparent,
+                        onPressed: null,
+                        label: Text("Overview"),
+                        icon: Icon(Icons.calendar_month_outlined),
+                      ),
+                    ],
                   ),
                 ],
               ),
