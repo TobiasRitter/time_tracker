@@ -116,6 +116,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           child: Column(
             children: <Widget>[
               Expanded(
+                flex: 2,
                 child: Center(
                   child: AutoSizeText(
                     '01:53',
@@ -125,50 +126,52 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 ),
               ),
               Expanded(
-                child: Column(
+                child: ListView(children: const [
+                  TimeRecord(),
+                  TimeRecord(),
+                  TimeRecord(),
+                  TimeRecord(),
+                  TimeRecord(),
+                  TimeRecord(),
+                  TimeRecord(),
+                  TimeRecord(),
+                  TimeRecord(),
+                ]),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 64.0),
+                child: Row(
                   children: [
                     Expanded(
-                      child: ListView(children: const [
-                        TimeRecord(),
-                        TimeRecord(),
-                        TimeRecord(),
-                      ]),
-                    ),
-                    Expanded(
-                      child: FloatingActionButton.large(
-                        backgroundColor: _running
-                            ? Theme.of(context).colorScheme.secondary
-                            : Theme.of(context)
-                                .colorScheme
-                                .primary
-                                .withAlpha(150),
-                        onPressed: _toggleRunning,
-                        child: AnimatedIcon(
-                          icon: AnimatedIcons.play_pause,
-                          progress: _animation,
-                        ),
+                      child: FloatingActionButton.extended(
+                        foregroundColor: Theme.of(context).colorScheme.primary,
+                        backgroundColor: Colors.transparent,
+                        onPressed: null,
+                        label: Text("Import/Export"),
+                        icon: Icon(Icons.import_export_outlined),
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        FloatingActionButton.extended(
-                          foregroundColor:
-                              Theme.of(context).colorScheme.primary,
-                          backgroundColor: Colors.transparent,
-                          onPressed: null,
-                          label: Text("Import/Export"),
-                          icon: Icon(Icons.import_export_outlined),
-                        ),
-                        FloatingActionButton.extended(
-                          foregroundColor:
-                              Theme.of(context).colorScheme.primary,
-                          backgroundColor: Colors.transparent,
-                          onPressed: null,
-                          label: Text("Overview"),
-                          icon: Icon(Icons.calendar_month_outlined),
-                        ),
-                      ],
+                    FloatingActionButton.large(
+                      backgroundColor: _running
+                          ? Theme.of(context).colorScheme.secondary
+                          : Theme.of(context)
+                              .colorScheme
+                              .primary
+                              .withAlpha(150),
+                      onPressed: _toggleRunning,
+                      child: AnimatedIcon(
+                        icon: AnimatedIcons.play_pause,
+                        progress: _animation,
+                      ),
+                    ),
+                    Expanded(
+                      child: FloatingActionButton.extended(
+                        foregroundColor: Theme.of(context).colorScheme.primary,
+                        backgroundColor: Colors.transparent,
+                        onPressed: null,
+                        label: Text("Overview"),
+                        icon: Icon(Icons.calendar_month_outlined),
+                      ),
                     ),
                   ],
                 ),
