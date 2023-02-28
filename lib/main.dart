@@ -1,6 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
+const primaryColor = Color.fromARGB(255, 128, 128, 128);
+const textColor = Color.fromARGB(255, 96, 96, 96);
+const secondaryColor = Color.fromARGB(255, 255, 0, 96);
+
 void main() {
   runApp(const MyApp());
 }
@@ -14,7 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'Time Tracker',
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.black,
-        iconTheme: IconThemeData(color: Colors.white24, size: 32.0),
+        iconTheme: IconThemeData(color: textColor, size: 32.0),
         textTheme: const TextTheme(
             headlineLarge: TextStyle(
               fontSize: 10000,
@@ -22,14 +26,14 @@ class MyApp extends StatelessWidget {
             ),
             bodyLarge: const TextStyle(
               fontSize: 20,
-              color: Colors.white54,
+              color: primaryColor,
             ),
             bodyMedium: const TextStyle(
-              color: Colors.white24,
+              color: textColor,
             )),
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: const Color.fromARGB(150, 64, 64, 64),
-          secondary: const Color.fromARGB(255, 255, 0, 96),
+          primary: primaryColor,
+          secondary: secondaryColor,
           brightness: Brightness.dark,
         ),
       ),
@@ -85,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             colors: [
               _running
                   ? Theme.of(context).colorScheme.secondary.withAlpha(150)
-                  : Theme.of(context).colorScheme.primary,
+                  : Theme.of(context).colorScheme.primary.withAlpha(100),
               Colors.transparent
             ],
           ),
@@ -117,7 +121,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                       child: FloatingActionButton.large(
                         backgroundColor: _running
                             ? Theme.of(context).colorScheme.secondary
-                            : Theme.of(context).colorScheme.primary,
+                            : Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withAlpha(150),
                         onPressed: _toggleRunning,
                         child: AnimatedIcon(
                           icon: AnimatedIcons.play_pause,
@@ -129,18 +136,24 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         FloatingActionButton.extended(
+                          foregroundColor:
+                              Theme.of(context).colorScheme.primary,
                           backgroundColor: Colors.transparent,
                           onPressed: null,
                           label: Text("Edit"),
                           icon: Icon(Icons.edit_outlined),
                         ),
                         FloatingActionButton.extended(
+                          foregroundColor:
+                              Theme.of(context).colorScheme.primary,
                           backgroundColor: Colors.transparent,
                           onPressed: null,
                           label: Text("Export"),
                           icon: Icon(Icons.import_export_outlined),
                         ),
                         FloatingActionButton.extended(
+                          foregroundColor:
+                              Theme.of(context).colorScheme.primary,
                           backgroundColor: Colors.transparent,
                           onPressed: null,
                           label: Text("Overview"),
