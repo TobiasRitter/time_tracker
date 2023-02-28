@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 const primaryColor = Color.fromARGB(255, 128, 128, 128);
+const titleColor = Color.fromARGB(255, 144, 144, 144);
 const textColor = Color.fromARGB(255, 96, 96, 96);
 const secondaryColor = Color.fromARGB(255, 255, 0, 96);
 
@@ -29,9 +30,15 @@ class MyApp extends StatelessWidget {
               color: Colors.white,
             ),
           ),
+          headlineMedium: GoogleFonts.oswald(
+            textStyle: const TextStyle(
+              fontSize: 40,
+              color: titleColor,
+            ),
+          ),
           bodyLarge: GoogleFonts.oswald(
             textStyle: const TextStyle(
-              fontSize: 20,
+              fontSize: 18,
               color: primaryColor,
             ),
           ),
@@ -150,15 +157,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                               Theme.of(context).colorScheme.primary,
                           backgroundColor: Colors.transparent,
                           onPressed: null,
-                          label: Text("Edit"),
-                          icon: Icon(Icons.edit_outlined),
-                        ),
-                        FloatingActionButton.extended(
-                          foregroundColor:
-                              Theme.of(context).colorScheme.primary,
-                          backgroundColor: Colors.transparent,
-                          onPressed: null,
-                          label: Text("Export"),
+                          label: Text("Import/Export"),
                           icon: Icon(Icons.import_export_outlined),
                         ),
                         FloatingActionButton.extended(
@@ -196,8 +195,9 @@ class TimeRecord extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Icon(
-              Icons.timer_outlined,
+            child: Text(
+              "10:00 - 11:30",
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
           ),
           Padding(
@@ -206,21 +206,22 @@ class TimeRecord extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 4.0),
-                  child: Text(
-                    "1h 30min",
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
+                Text(
+                  "1h 30min",
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 4.0),
-                  child: Text(
-                    "10:00 - 11:30",
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
+                Text(
+                  "01.01.2023",
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: IconButton(
+              icon: const Icon(Icons.edit_outlined),
+              onPressed: () => {},
             ),
           ),
         ],
