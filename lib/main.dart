@@ -13,12 +13,22 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Time Tracker',
       theme: ThemeData(
+        scaffoldBackgroundColor: Colors.black,
+        iconTheme: IconThemeData(color: Colors.white38, size: 32.0),
         textTheme: const TextTheme(
-          headlineLarge: TextStyle(
-            fontSize: 200,
-          ),
-        ),
+            headlineLarge: TextStyle(
+              fontSize: 10000,
+              color: Colors.white,
+            ),
+            bodyLarge: const TextStyle(
+              fontSize: 20,
+              color: Colors.white70,
+            ),
+            bodyMedium: const TextStyle(
+              color: Colors.white38,
+            )),
         colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: Colors.white12,
           secondary: const Color.fromARGB(255, 255, 0, 96),
           brightness: Brightness.dark,
         ),
@@ -72,22 +82,36 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           children: <Widget>[
             Expanded(
               child: Center(
-                child: AutoSizeText(
-                  '01:53',
-                  style: Theme.of(context).textTheme.headlineLarge,
-                  maxLines: 1,
+                child: Padding(
+                  padding: const EdgeInsets.all(128.0),
+                  child: AutoSizeText(
+                    '01:53',
+                    style: Theme.of(context).textTheme.headlineLarge,
+                    maxLines: 1,
+                  ),
                 ),
               ),
             ),
             Expanded(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  FloatingActionButton.large(
-                    onPressed: _toggleRunning,
-                    child: AnimatedIcon(
-                      icon: AnimatedIcons.play_pause,
-                      progress: _animation,
+                  Expanded(
+                    child: ListView(children: const [
+                      TimeRecord(),
+                      TimeRecord(),
+                      TimeRecord(),
+                    ]),
+                  ),
+                  Expanded(
+                    child: FloatingActionButton.large(
+                      backgroundColor: _running
+                          ? null
+                          : Theme.of(context).colorScheme.primary,
+                      onPressed: _toggleRunning,
+                      child: AnimatedIcon(
+                        icon: AnimatedIcons.play_pause,
+                        progress: _animation,
+                      ),
                     ),
                   ),
                 ],
@@ -95,6 +119,53 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class TimeRecord extends StatelessWidget {
+  const TimeRecord({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 12.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Icon(
+              Icons.timer_outlined,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4.0),
+                  child: Text(
+                    "10:00 - 11:30",
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4.0),
+                  child: Text(
+                    "01.01.2023",
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
