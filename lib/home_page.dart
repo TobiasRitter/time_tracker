@@ -40,7 +40,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -100,10 +101,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     FloatingActionButton.large(
                       backgroundColor: _running
                           ? Theme.of(context).colorScheme.secondary
-                          : Theme.of(context)
-                              .colorScheme
-                              .primary
-                              .withAlpha(150),
+                          : Theme.of(context).colorScheme.primary,
                       onPressed: _toggleRunning,
                       child: AnimatedIcon(
                         icon: AnimatedIcons.play_pause,

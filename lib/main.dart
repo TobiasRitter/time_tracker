@@ -23,6 +23,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Time Tracker',
       theme: ThemeData(
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          foregroundColor: Colors.black,
+        ),
         scaffoldBackgroundColor: Colors.black,
         iconTheme: const IconThemeData(color: textColor, size: 32.0),
         textTheme: GoogleFonts.oswaldTextTheme(textTheme).copyWith(
