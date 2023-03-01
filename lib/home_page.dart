@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     TimeRecord(),
                     TimeRecord(),
                     Padding(
-                      padding: EdgeInsets.all(24.0),
+                      padding: EdgeInsets.all(32.0),
                       child: Icon(Icons.more_vert_outlined),
                     ),
                   ],
