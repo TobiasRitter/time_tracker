@@ -126,17 +126,18 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 ),
               ),
               Expanded(
-                child: ListView(children: const [
-                  TimeRecord(),
-                  TimeRecord(),
-                  TimeRecord(),
-                  TimeRecord(),
-                  TimeRecord(),
-                  TimeRecord(),
-                  TimeRecord(),
-                  TimeRecord(),
-                  TimeRecord(),
-                ]),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    TimeRecord(),
+                    TimeRecord(),
+                    TimeRecord(),
+                    Padding(
+                      padding: EdgeInsets.all(12.0),
+                      child: Icon(Icons.more_vert_outlined),
+                    ),
+                  ],
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 64.0),
@@ -147,8 +148,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                         foregroundColor: Theme.of(context).colorScheme.primary,
                         backgroundColor: Colors.transparent,
                         onPressed: null,
-                        label: Text("Import/Export"),
-                        icon: Icon(Icons.import_export_outlined),
+                        label: Text("Records"),
+                        icon: Icon(Icons.edit_outlined),
                       ),
                     ),
                     FloatingActionButton.large(
@@ -169,7 +170,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                         foregroundColor: Theme.of(context).colorScheme.primary,
                         backgroundColor: Colors.transparent,
                         onPressed: null,
-                        label: Text("Overview"),
+                        label: Text("Summary"),
                         icon: Icon(Icons.calendar_month_outlined),
                       ),
                     ),
@@ -196,6 +197,10 @@ class TimeRecord extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: Icon(Icons.timer_outlined),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Text(
@@ -218,13 +223,6 @@ class TimeRecord extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: IconButton(
-              icon: const Icon(Icons.edit_outlined),
-              onPressed: () => {},
             ),
           ),
         ],
