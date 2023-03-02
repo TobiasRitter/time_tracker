@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:table_calendar/table_calendar.dart';
 import 'package:time_tracker/time_record.dart';
 
 class RecordsPage extends StatelessWidget {
@@ -28,8 +29,31 @@ class RecordsPage extends StatelessWidget {
             child: Column(children: [
               Expanded(
                 flex: 2,
-                child: Container(
-                  color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 64.0),
+                  child: TableCalendar(
+                    startingDayOfWeek: StartingDayOfWeek.monday,
+                    firstDay: DateTime.utc(2010, 10, 16),
+                    lastDay: DateTime.utc(2030, 3, 14),
+                    focusedDay: DateTime.now(),
+                    availableCalendarFormats: const {
+                      CalendarFormat.month: "Month"
+                    },
+                    shouldFillViewport: true,
+                    daysOfWeekVisible: false,
+                    calendarStyle: CalendarStyle(
+                        isTodayHighlighted: false,
+                        outsideDaysVisible: false,
+                        defaultTextStyle:
+                            Theme.of(context).textTheme.bodyLarge!,
+                        weekendTextStyle: Theme.of(context)
+                            .textTheme
+                            .bodyLarge!
+                            .copyWith(color: Colors.grey)),
+                    headerStyle: HeaderStyle(
+                        titleTextStyle:
+                            Theme.of(context).textTheme.headlineMedium!),
+                  ),
                 ),
               ),
               Expanded(
