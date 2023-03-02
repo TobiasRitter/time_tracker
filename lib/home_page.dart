@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:time_tracker/records_page.dart';
 import 'package:time_tracker/time_record.dart';
 
 class HomePage extends StatefulWidget {
@@ -69,20 +70,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 ),
               ),
               Expanded(
-                child: FittedBox(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      TimeRecord(),
-                      TimeRecord(),
-                      TimeRecord(),
-                      Padding(
-                        padding: EdgeInsets.all(32.0),
-                        child: Icon(Icons.more_vert_outlined),
-                      ),
-                    ],
-                  ),
-                ),
+                child: ListView(children: const [
+                  TimeRecord(editable: false),
+                  TimeRecord(editable: false),
+                  TimeRecord(editable: false),
+                ]),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 64.0),
@@ -91,16 +83,23 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     Expanded(
                       child: Center(
                         child: FloatingActionButton.extended(
+                          heroTag: "records",
                           foregroundColor:
                               Theme.of(context).colorScheme.primary,
                           backgroundColor: Colors.transparent,
-                          onPressed: () => {},
-                          label: Text("Records"),
-                          icon: Icon(Icons.calendar_month_rounded),
+                          onPressed: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => RecordsPage(
+                                        running: _running,
+                                      ))),
+                          label: const Text("Records"),
+                          icon: const Icon(Icons.calendar_month_outlined),
                         ),
                       ),
                     ),
                     FloatingActionButton.large(
+                      heroTag: "main",
                       backgroundColor: _running
                           ? Theme.of(context).colorScheme.secondary
                           : Theme.of(context).colorScheme.primary,
@@ -113,12 +112,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     Expanded(
                       child: Center(
                         child: FloatingActionButton.extended(
+                          heroTag: "stats",
                           foregroundColor:
                               Theme.of(context).colorScheme.primary,
                           backgroundColor: Colors.transparent,
                           onPressed: () => {},
-                          label: Text("Stats"),
-                          icon: Icon(Icons.bar_chart),
+                          label: const Text("Stats"),
+                          icon: const Icon(Icons.bar_chart_outlined),
                         ),
                       ),
                     ),

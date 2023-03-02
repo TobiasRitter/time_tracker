@@ -4,9 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:time_tracker/home_page.dart';
 import 'package:time_tracker/time_record.dart';
 
-const primaryColor = Color.fromARGB(255, 128, 128, 128);
-const titleColor = Color.fromARGB(255, 144, 144, 144);
-const textColor = Color.fromARGB(255, 96, 96, 96);
 const secondaryColor = Color.fromARGB(255, 255, 0, 96);
 
 void main() {
@@ -27,7 +24,7 @@ class MyApp extends StatelessWidget {
           foregroundColor: Colors.black,
         ),
         scaffoldBackgroundColor: Colors.black,
-        iconTheme: const IconThemeData(color: textColor, size: 32.0),
+        iconTheme: const IconThemeData(color: Colors.grey, size: 32.0),
         textTheme: GoogleFonts.oswaldTextTheme(textTheme).copyWith(
           headlineLarge: GoogleFonts.oswald(
             textStyle: const TextStyle(
@@ -38,23 +35,23 @@ class MyApp extends StatelessWidget {
           headlineMedium: GoogleFonts.oswald(
             textStyle: const TextStyle(
               fontSize: 40,
-              color: titleColor,
+              color: Colors.white,
             ),
           ),
           bodyLarge: GoogleFonts.oswald(
             textStyle: const TextStyle(
               fontSize: 18,
-              color: primaryColor,
+              color: Colors.white,
             ),
           ),
           bodyMedium: GoogleFonts.oswald(
             textStyle: const TextStyle(
-              color: textColor,
+              color: Colors.grey,
             ),
           ),
         ),
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: primaryColor,
+          primary: Colors.grey,
           secondary: secondaryColor,
           brightness: Brightness.dark,
         ),

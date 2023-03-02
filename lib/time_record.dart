@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class TimeRecord extends StatelessWidget {
+  final bool editable;
+
   const TimeRecord({
     super.key,
+    required this.editable,
   });
 
   @override
@@ -30,16 +33,22 @@ class TimeRecord extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "1h 30min",
+                  "1 hour",
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 Text(
-                  "01.01.2023",
+                  "30 minutes",
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ],
             ),
           ),
+          editable
+              ? const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Icon(Icons.edit_outlined),
+                )
+              : Container(),
         ],
       ),
     );
