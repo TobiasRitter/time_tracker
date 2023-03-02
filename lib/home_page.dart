@@ -69,17 +69,19 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 ),
               ),
               Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    TimeRecord(),
-                    TimeRecord(),
-                    TimeRecord(),
-                    Padding(
-                      padding: EdgeInsets.all(32.0),
-                      child: Icon(Icons.more_vert_outlined),
-                    ),
-                  ],
+                child: FittedBox(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      TimeRecord(),
+                      TimeRecord(),
+                      TimeRecord(),
+                      Padding(
+                        padding: EdgeInsets.all(32.0),
+                        child: Icon(Icons.more_vert_outlined),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Padding(
@@ -94,7 +96,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           backgroundColor: Colors.transparent,
                           onPressed: () => {},
                           label: Text("Records"),
-                          icon: Icon(Icons.edit_outlined),
+                          icon: Icon(Icons.calendar_month_rounded),
                         ),
                       ),
                     ),
@@ -115,8 +117,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                               Theme.of(context).colorScheme.primary,
                           backgroundColor: Colors.transparent,
                           onPressed: () => {},
-                          label: Text("Summary"),
-                          icon: Icon(Icons.calendar_month_outlined),
+                          label: Text("Stats"),
+                          icon: Icon(Icons.bar_chart),
                         ),
                       ),
                     ),
