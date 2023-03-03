@@ -61,15 +61,15 @@ class StatsPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    FloatingActionButton.extended(
-                        heroTag: "main",
-                        backgroundColor: running
-                            ? Theme.of(context).colorScheme.secondary
-                            : Theme.of(context).colorScheme.primary,
-                        onPressed: () {},
-                        icon: const Icon(Icons.import_export),
-                        label: const Text("Import/Export")),
-                    Spacer(),
+                    FloatingActionButton.large(
+                      heroTag: "main",
+                      backgroundColor: running
+                          ? Theme.of(context).colorScheme.secondary
+                          : Theme.of(context).colorScheme.primary,
+                      onPressed: () {},
+                      child: const Icon(Icons.file_download),
+                    ),
+                    const Spacer(),
                   ],
                 ),
               ),

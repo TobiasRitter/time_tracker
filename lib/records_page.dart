@@ -28,9 +28,8 @@ class RecordsPage extends StatelessWidget {
             padding: const EdgeInsets.all(64.0),
             child: Column(children: [
               Expanded(
-                flex: 2,
                 child: Padding(
-                  padding: const EdgeInsets.only(bottom: 64.0),
+                  padding: const EdgeInsets.only(bottom: 32.0),
                   child: TableCalendar(
                     startingDayOfWeek: StartingDayOfWeek.monday,
                     firstDay: DateTime.utc(2010, 10, 16),
@@ -42,7 +41,10 @@ class RecordsPage extends StatelessWidget {
                     shouldFillViewport: true,
                     daysOfWeekVisible: false,
                     calendarStyle: CalendarStyle(
-                        isTodayHighlighted: false,
+                        // isTodayHighlighted: false,
+                        todayTextStyle: const TextStyle(color: Colors.black),
+                        todayDecoration: const BoxDecoration(
+                            color: Colors.white, shape: BoxShape.circle),
                         outsideDaysVisible: false,
                         defaultTextStyle:
                             Theme.of(context).textTheme.bodyLarge!,
@@ -56,9 +58,11 @@ class RecordsPage extends StatelessWidget {
                   ),
                 ),
               ),
+              const Divider(),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(32.0),
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 32.0, horizontal: 28.0),
                   child: ListView(children: const [
                     TimeRecord(),
                     TimeRecord(),
@@ -83,15 +87,15 @@ class RecordsPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    FloatingActionButton.extended(
-                        heroTag: "main",
-                        backgroundColor: running
-                            ? Theme.of(context).colorScheme.secondary
-                            : Theme.of(context).colorScheme.primary,
-                        onPressed: () {},
-                        icon: const Icon(Icons.add),
-                        label: const Text("New Entry")),
-                    Spacer(),
+                    FloatingActionButton.large(
+                      heroTag: "main",
+                      backgroundColor: running
+                          ? Theme.of(context).colorScheme.secondary
+                          : Theme.of(context).colorScheme.primary,
+                      onPressed: () {},
+                      child: const Icon(Icons.add),
+                    ),
+                    const Spacer(),
                   ],
                 ),
               ),
