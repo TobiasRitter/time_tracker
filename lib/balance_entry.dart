@@ -23,12 +23,9 @@ class BalanceEntry extends StatelessWidget {
             style: Theme.of(context).textTheme.headlineMedium,
           ),
           Spacer(),
-          Opacity(
-            opacity: 0.5,
-            child: Text(
-              "1 hour 30 minutes",
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+          Text(
+            "1 hour 30 minutes",
+            style: Theme.of(context).textTheme.headlineSmall,
           ),
         ],
       ),

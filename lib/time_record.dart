@@ -14,12 +14,9 @@ class TimeRecord extends StatelessWidget {
             style: Theme.of(context).textTheme.headlineMedium,
           ),
           SizedBox(width: 32.0),
-          Opacity(
-            opacity: 0.5,
-            child: Text(
-              "1 hour 30 minutes",
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+          Text(
+            "1 hour 30 minutes",
+            style: Theme.of(context).textTheme.headlineSmall,
           ),
           const Spacer(),
           Icon(Icons.edit_outlined),

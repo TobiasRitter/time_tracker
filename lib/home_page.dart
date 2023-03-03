@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             colors: [
               _running
                   ? Theme.of(context).colorScheme.secondary.withAlpha(150)
-                  : Theme.of(context).colorScheme.primary.withAlpha(100),
+                  : Theme.of(context).colorScheme.primary.withAlpha(75),
               Colors.transparent
             ],
           ),
@@ -69,6 +69,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       style: Theme.of(context).textTheme.headlineLarge,
                       maxLines: 1,
                     ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 32.0),
+                      child: Divider(),
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -85,12 +89,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: Opacity(
-                            opacity: 0.5,
-                            child: Text(
-                              "1 hour 30 minutes",
-                              style: Theme.of(context).textTheme.headlineMedium,
-                            ),
+                          child: Text(
+                            "1 hour 30 minutes",
+                            style: Theme.of(context).textTheme.headlineSmall,
                           ),
                         ),
                       ],

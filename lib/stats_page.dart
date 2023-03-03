@@ -21,7 +21,7 @@ class StatsPage extends StatelessWidget {
               colors: [
                 running
                     ? Theme.of(context).colorScheme.secondary.withAlpha(150)
-                    : Theme.of(context).colorScheme.primary.withAlpha(100),
+                    : Theme.of(context).colorScheme.primary.withAlpha(75),
                 Colors.transparent
               ],
             ),
@@ -30,6 +30,7 @@ class StatsPage extends StatelessWidget {
             padding: const EdgeInsets.all(64.0),
             child: Column(children: [
               Expanded(
+                flex: 2,
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(32.0, 0.0, 32.0, 16.0),
                   child: BarChart(
@@ -66,11 +67,11 @@ class StatsPage extends StatelessWidget {
                       rangeAnnotations: RangeAnnotations(),
                       gridData: FlGridData(show: false),
                       barGroups: [
-                        getBar(0, 1.0, Theme.of(context).colorScheme.tertiary),
-                        getBar(1, 1.5, Theme.of(context).colorScheme.tertiary),
-                        getBar(2, 0.5, Theme.of(context).colorScheme.tertiary),
-                        getBar(3, -1.0, Theme.of(context).colorScheme.tertiary),
-                        getBar(4, -0.5, Theme.of(context).colorScheme.tertiary),
+                        getBar(0, 1.0, Theme.of(context).colorScheme.primary),
+                        getBar(1, 1.5, Theme.of(context).colorScheme.primary),
+                        getBar(2, 0.5, Theme.of(context).colorScheme.primary),
+                        getBar(3, -1.0, Theme.of(context).colorScheme.primary),
+                        getBar(4, -0.5, Theme.of(context).colorScheme.primary),
                       ],
                     ),
                   ),
@@ -80,21 +81,19 @@ class StatsPage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(vertical: 32.0),
                 child: Divider(),
               ),
-              const BalanceEntry(
-                title: "This week",
-                icon: Icons.calendar_today,
-              ),
-              const BalanceEntry(
-                title: "This month",
-                icon: Icons.calendar_month,
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 32.0),
-                child: Divider(),
-              ),
-              const BalanceEntry(
-                title: "Total balance",
-                icon: Icons.timer_outlined,
+              Expanded(
+                child: Column(
+                  children: const [
+                    BalanceEntry(
+                      title: "This week",
+                      icon: Icons.calendar_today,
+                    ),
+                    BalanceEntry(
+                      title: "Total balance",
+                      icon: Icons.calendar_month,
+                    ),
+                  ],
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 64.0),

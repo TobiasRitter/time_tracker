@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:time_tracker/home_page.dart';
 
-const primaryColor = Colors.blueAccent;
-const secondaryColor = Color.fromARGB(255, 255, 0, 96);
-
 void main() {
   runApp(const MyApp());
 }
@@ -37,6 +34,12 @@ class MyApp extends StatelessWidget {
               color: Colors.white,
             ),
           ),
+          headlineSmall: GoogleFonts.oswald(
+            textStyle: const TextStyle(
+              fontSize: 40,
+              color: Colors.grey,
+            ),
+          ),
           bodyLarge: GoogleFonts.oswald(
             textStyle: const TextStyle(
               fontSize: 18,
@@ -51,9 +54,9 @@ class MyApp extends StatelessWidget {
           ),
         ),
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: primaryColor,
-          secondary: secondaryColor,
-          tertiary: Colors.white,
+          primary: Colors.white,
+          secondary: Colors.blueAccent,
+          tertiary: Colors.grey,
           brightness: Brightness.dark,
         ),
       ),

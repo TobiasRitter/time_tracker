@@ -19,7 +19,7 @@ class RecordsPage extends StatelessWidget {
               colors: [
                 running
                     ? Theme.of(context).colorScheme.secondary.withAlpha(150)
-                    : Theme.of(context).colorScheme.primary.withAlpha(100),
+                    : Theme.of(context).colorScheme.primary.withAlpha(75),
                 Colors.transparent
               ],
             ),
@@ -43,7 +43,7 @@ class RecordsPage extends StatelessWidget {
                       todayTextStyle:
                           TextStyle(color: Theme.of(context).canvasColor),
                       todayDecoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.tertiary,
+                          color: Theme.of(context).colorScheme.primary,
                           shape: BoxShape.circle),
                       outsideDaysVisible: false,
                       defaultTextStyle: Theme.of(context).textTheme.bodyLarge!,
