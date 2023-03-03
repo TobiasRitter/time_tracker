@@ -28,41 +28,37 @@ class RecordsPage extends StatelessWidget {
             padding: const EdgeInsets.all(64.0),
             child: Column(children: [
               Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 32.0),
-                  child: TableCalendar(
-                    startingDayOfWeek: StartingDayOfWeek.monday,
-                    firstDay: DateTime.utc(2010, 10, 16),
-                    lastDay: DateTime.utc(2030, 3, 14),
-                    focusedDay: DateTime.now(),
-                    availableCalendarFormats: const {
-                      CalendarFormat.month: "Month"
-                    },
-                    shouldFillViewport: true,
-                    daysOfWeekVisible: false,
-                    calendarStyle: CalendarStyle(
-                        // isTodayHighlighted: false,
-                        todayTextStyle: const TextStyle(color: Colors.black),
-                        todayDecoration: const BoxDecoration(
-                            color: Colors.white, shape: BoxShape.circle),
-                        outsideDaysVisible: false,
-                        defaultTextStyle:
-                            Theme.of(context).textTheme.bodyLarge!,
-                        weekendTextStyle: Theme.of(context)
-                            .textTheme
-                            .bodyLarge!
-                            .copyWith(color: Colors.grey)),
-                    headerStyle: HeaderStyle(
-                        titleTextStyle:
-                            Theme.of(context).textTheme.headlineMedium!),
-                  ),
+                child: TableCalendar(
+                  startingDayOfWeek: StartingDayOfWeek.monday,
+                  firstDay: DateTime.utc(2010, 10, 16),
+                  lastDay: DateTime.utc(2030, 3, 14),
+                  focusedDay: DateTime.now(),
+                  availableCalendarFormats: const {
+                    CalendarFormat.month: "Month"
+                  },
+                  shouldFillViewport: true,
+                  daysOfWeekVisible: false,
+                  calendarStyle: CalendarStyle(
+                      // isTodayHighlighted: false,
+                      todayTextStyle: const TextStyle(color: Colors.black),
+                      todayDecoration: const BoxDecoration(
+                          color: Colors.white, shape: BoxShape.circle),
+                      outsideDaysVisible: false,
+                      defaultTextStyle: Theme.of(context).textTheme.bodyLarge!,
+                      weekendTextStyle:
+                          Theme.of(context).textTheme.bodyMedium!),
+                  headerStyle: HeaderStyle(
+                      titleTextStyle:
+                          Theme.of(context).textTheme.headlineMedium!),
                 ),
               ),
-              const Divider(),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 32.0),
+                child: Divider(),
+              ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 32.0, horizontal: 28.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 32.0),
                   child: ListView(children: const [
                     TimeRecord(),
                     TimeRecord(),

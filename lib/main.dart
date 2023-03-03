@@ -44,6 +44,7 @@ class MyApp extends StatelessWidget {
           ),
           bodyMedium: GoogleFonts.oswald(
             textStyle: const TextStyle(
+              fontSize: 18,
               color: Colors.grey,
             ),
           ),
