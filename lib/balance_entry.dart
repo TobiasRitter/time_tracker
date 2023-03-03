@@ -17,12 +17,12 @@ class BalanceEntry extends StatelessWidget {
       child: Row(
         children: [
           Icon(icon),
-          SizedBox(width: 32.0),
+          const SizedBox(width: 32.0),
           Text(
             title,
             style: Theme.of(context).textTheme.headlineMedium,
           ),
-          Spacer(),
+          const Spacer(),
           Text(
             "1 hour 30 minutes",
             style: Theme.of(context).textTheme.headlineSmall,

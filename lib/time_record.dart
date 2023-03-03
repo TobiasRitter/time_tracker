@@ -13,13 +13,13 @@ class TimeRecord extends StatelessWidget {
             "10:00 - 11:30",
             style: Theme.of(context).textTheme.headlineMedium,
           ),
-          SizedBox(width: 32.0),
+          const SizedBox(width: 32.0),
           Text(
             "1 hour 30 minutes",
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           const Spacer(),
-          Icon(Icons.edit_outlined),
+          const Icon(Icons.edit_outlined),
         ],
       ),
     );

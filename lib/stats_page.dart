@@ -1,8 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:table_calendar/table_calendar.dart';
 import 'package:time_tracker/balance_entry.dart';
-import 'package:time_tracker/time_record.dart';
 
 class StatsPage extends StatelessWidget {
   final bool running;
