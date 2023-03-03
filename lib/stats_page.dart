@@ -27,7 +27,22 @@ class StatsPage extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(64.0),
             child: Column(children: [
-              Expanded(child: Container()),
+              Expanded(
+                child: Container(
+                  color: Colors.white,
+                  child: Center(
+                    child: Text("Column Chart"),
+                  ),
+                ),
+              ),
+              Expanded(
+                  child: Column(
+                children: [
+                  Row(
+                    children: [Text("Overtime:")],
+                  )
+                ],
+              )),
               Padding(
                 padding: const EdgeInsets.only(top: 64.0),
                 child: Row(
