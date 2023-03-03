@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         child: FloatingActionButton.extended(
                           heroTag: "records",
                           foregroundColor:
-                              Theme.of(context).colorScheme.primary,
+                              Theme.of(context).colorScheme.tertiary,
                           backgroundColor: Colors.transparent,
                           onPressed: () => Navigator.push(
                               context,
@@ -136,7 +136,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         child: FloatingActionButton.extended(
                           heroTag: "stats",
                           foregroundColor:
-                              Theme.of(context).colorScheme.primary,
+                              Theme.of(context).colorScheme.tertiary,
                           backgroundColor: Colors.transparent,
                           onPressed: () => Navigator.push(
                               context,

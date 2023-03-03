@@ -40,9 +40,11 @@ class RecordsPage extends StatelessWidget {
                   daysOfWeekVisible: false,
                   calendarStyle: CalendarStyle(
                       // isTodayHighlighted: false,
-                      todayTextStyle: const TextStyle(color: Colors.black),
-                      todayDecoration: const BoxDecoration(
-                          color: Colors.white, shape: BoxShape.circle),
+                      todayTextStyle:
+                          TextStyle(color: Theme.of(context).canvasColor),
+                      todayDecoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.tertiary,
+                          shape: BoxShape.circle),
                       outsideDaysVisible: false,
                       defaultTextStyle: Theme.of(context).textTheme.bodyLarge!,
                       weekendTextStyle:
@@ -75,7 +77,7 @@ class RecordsPage extends StatelessWidget {
                         child: FloatingActionButton.extended(
                           heroTag: "records",
                           foregroundColor:
-                              Theme.of(context).colorScheme.primary,
+                              Theme.of(context).colorScheme.tertiary,
                           backgroundColor: Colors.transparent,
                           onPressed: () => Navigator.pop(context),
                           label: const Text("Back"),

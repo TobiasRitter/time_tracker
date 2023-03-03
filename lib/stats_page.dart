@@ -66,11 +66,11 @@ class StatsPage extends StatelessWidget {
                       rangeAnnotations: RangeAnnotations(),
                       gridData: FlGridData(show: false),
                       barGroups: [
-                        getBar(0, 1.0),
-                        getBar(1, 1.5),
-                        getBar(2, 0.5),
-                        getBar(3, -1.0),
-                        getBar(4, -0.5),
+                        getBar(0, 1.0, Theme.of(context).colorScheme.tertiary),
+                        getBar(1, 1.5, Theme.of(context).colorScheme.tertiary),
+                        getBar(2, 0.5, Theme.of(context).colorScheme.tertiary),
+                        getBar(3, -1.0, Theme.of(context).colorScheme.tertiary),
+                        getBar(4, -0.5, Theme.of(context).colorScheme.tertiary),
                       ],
                     ),
                   ),
@@ -105,7 +105,7 @@ class StatsPage extends StatelessWidget {
                         child: FloatingActionButton.extended(
                           heroTag: "records",
                           foregroundColor:
-                              Theme.of(context).colorScheme.primary,
+                              Theme.of(context).colorScheme.tertiary,
                           backgroundColor: Colors.transparent,
                           onPressed: () => Navigator.pop(context),
                           label: const Text("Back"),
@@ -137,10 +137,10 @@ class StatsPage extends StatelessWidget {
     return weekdays[x];
   }
 
-  BarChartGroupData getBar(int x, double y) {
+  BarChartGroupData getBar(int x, double y, Color color) {
     return BarChartGroupData(
       x: x,
-      barRods: [BarChartRodData(toY: y, color: Colors.white, width: 32.0)],
+      barRods: [BarChartRodData(toY: y, color: color, width: 32.0)],
     );
   }
 }
