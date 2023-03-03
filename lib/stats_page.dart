@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:time_tracker/balance_entry.dart';
@@ -30,11 +31,47 @@ class StatsPage extends StatelessWidget {
             child: Column(children: [
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(bottom: 16.0),
-                  child: Container(
-                    color: Colors.white,
-                    child: const Center(
-                      child: Text("Column Chart"),
+                  padding: const EdgeInsets.fromLTRB(32.0, 0.0, 32.0, 16.0),
+                  child: BarChart(
+                    BarChartData(
+                      alignment: BarChartAlignment.spaceBetween,
+                      titlesData: FlTitlesData(
+                        show: true,
+                        rightTitles: AxisTitles(
+                          sideTitles: SideTitles(showTitles: false),
+                        ),
+                        topTitles: AxisTitles(
+                          sideTitles: SideTitles(showTitles: false),
+                        ),
+                        bottomTitles: AxisTitles(
+                          sideTitles: SideTitles(
+                            showTitles: true,
+                            getTitlesWidget: (value, _) => Padding(
+                              padding: const EdgeInsets.only(top: 64.0),
+                              child: Text(
+                                getWeekDay(value.toInt()),
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              ),
+                            ),
+                            reservedSize: 96,
+                          ),
+                        ),
+                        leftTitles: AxisTitles(
+                          sideTitles: SideTitles(
+                            showTitles: false,
+                          ),
+                        ),
+                      ),
+                      borderData: FlBorderData(show: false),
+                      rangeAnnotations: RangeAnnotations(),
+                      gridData: FlGridData(show: false),
+                      barGroups: [
+                        getBar(0, 1.0),
+                        getBar(1, 1.5),
+                        getBar(2, 0.5),
+                        getBar(3, -1.0),
+                        getBar(4, -0.5),
+                      ],
                     ),
                   ),
                 ),
@@ -92,6 +129,18 @@ class StatsPage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  String getWeekDay(int x) {
+    List<String> weekdays = ["M", "T", "W", "T", "F"];
+    return weekdays[x];
+  }
+
+  BarChartGroupData getBar(int x, double y) {
+    return BarChartGroupData(
+      x: x,
+      barRods: [BarChartRodData(toY: y, color: Colors.white, width: 32.0)],
     );
   }
 }

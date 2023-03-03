@@ -38,6 +38,7 @@ dependencies:
   auto_size_text: ^3.0.0
   google_fonts: ^4.0.3
   table_calendar: ^3.0.9
+  fl_chart: ^0.61.0
 
 dev_dependencies:
   flutter_test:
