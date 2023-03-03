@@ -1,54 +1,27 @@
 import 'package:flutter/material.dart';
 
 class TimeRecord extends StatelessWidget {
-  final bool editable;
-
-  const TimeRecord({
-    super.key,
-    required this.editable,
-  });
+  const TimeRecord({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Icon(Icons.timer_outlined),
+          Text(
+            "10:00 - 11:30",
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          Opacity(
+            opacity: 0.5,
             child: Text(
-              "10:00 - 11:30",
+              "1 hour 30 minutes",
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "1 hour",
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-                Text(
-                  "30 minutes",
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
-              ],
-            ),
-          ),
-          editable
-              ? const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Icon(Icons.edit_outlined),
-                )
-              : Container(),
+          Icon(Icons.edit_outlined),
         ],
       ),
     );

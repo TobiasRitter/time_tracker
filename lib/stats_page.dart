@@ -36,13 +36,14 @@ class StatsPage extends StatelessWidget {
                 ),
               ),
               Expanded(
-                  child: Column(
-                children: [
-                  Row(
-                    children: [Text("Overtime:")],
-                  )
-                ],
-              )),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [Text("Overtime:")],
+                    )
+                  ],
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.only(top: 64.0),
                 child: Row(
@@ -60,15 +61,15 @@ class StatsPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Opacity(
-                      opacity: 0.0,
-                      child: Container(
-                        child: FloatingActionButton.large(onPressed: null),
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(),
-                    ),
+                    FloatingActionButton.extended(
+                        heroTag: "main",
+                        backgroundColor: running
+                            ? Theme.of(context).colorScheme.secondary
+                            : Theme.of(context).colorScheme.primary,
+                        onPressed: () {},
+                        icon: const Icon(Icons.import_export),
+                        label: const Text("Import/Export")),
+                    Spacer(),
                   ],
                 ),
               ),

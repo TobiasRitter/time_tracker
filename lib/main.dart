@@ -1,8 +1,6 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:time_tracker/home_page.dart';
-import 'package:time_tracker/time_record.dart';
 
 const secondaryColor = Color.fromARGB(255, 255, 0, 96);
 
@@ -24,7 +22,7 @@ class MyApp extends StatelessWidget {
           foregroundColor: Colors.black,
         ),
         scaffoldBackgroundColor: Colors.black,
-        iconTheme: const IconThemeData(color: Colors.grey, size: 32.0),
+        iconTheme: const IconThemeData(color: Colors.white, size: 32.0),
         textTheme: GoogleFonts.oswaldTextTheme(textTheme).copyWith(
           headlineLarge: GoogleFonts.oswald(
             textStyle: const TextStyle(

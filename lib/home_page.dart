@@ -61,21 +61,42 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           child: Column(
             children: <Widget>[
               Expanded(
-                flex: 2,
-                child: Center(
-                  child: AutoSizeText(
-                    '01:53',
-                    style: Theme.of(context).textTheme.headlineLarge,
-                    maxLines: 1,
-                  ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    AutoSizeText(
+                      '01:53',
+                      style: Theme.of(context).textTheme.headlineLarge,
+                      maxLines: 1,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Icon(Icons.timer_outlined),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Text(
+                            "10:00",
+                            style: Theme.of(context).textTheme.headlineMedium,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Opacity(
+                            opacity: 0.5,
+                            child: Text(
+                              "1 hour 30 minutes",
+                              style: Theme.of(context).textTheme.headlineMedium,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-              ),
-              Expanded(
-                child: ListView(children: const [
-                  TimeRecord(editable: false),
-                  TimeRecord(editable: false),
-                  TimeRecord(editable: false),
-                ]),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 64.0),
@@ -95,7 +116,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                         running: _running,
                                       ))),
                           label: const Text("Records"),
-                          icon: const Icon(Icons.calendar_month_outlined),
+                          icon: const Icon(Icons.calendar_month),
                         ),
                       ),
                     ),

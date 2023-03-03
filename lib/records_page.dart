@@ -57,11 +57,14 @@ class RecordsPage extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: ListView(children: const [
-                  TimeRecord(editable: true),
-                  TimeRecord(editable: true),
-                  TimeRecord(editable: true),
-                ]),
+                child: Padding(
+                  padding: const EdgeInsets.all(32.0),
+                  child: ListView(children: const [
+                    TimeRecord(),
+                    TimeRecord(),
+                    TimeRecord(),
+                  ]),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 64.0),
@@ -80,27 +83,15 @@ class RecordsPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    FloatingActionButton.large(
-                      heroTag: "main",
-                      backgroundColor: running
-                          ? Theme.of(context).colorScheme.secondary
-                          : Theme.of(context).colorScheme.primary,
-                      onPressed: () {},
-                      child: const Icon(Icons.add),
-                    ),
-                    Expanded(
-                      child: Center(
-                        child: FloatingActionButton.extended(
-                          heroTag: "stats",
-                          foregroundColor:
-                              Theme.of(context).colorScheme.primary,
-                          backgroundColor: Colors.transparent,
-                          onPressed: () {},
-                          label: const Text("Import/Export"),
-                          icon: const Icon(Icons.import_export),
-                        ),
-                      ),
-                    ),
+                    FloatingActionButton.extended(
+                        heroTag: "main",
+                        backgroundColor: running
+                            ? Theme.of(context).colorScheme.secondary
+                            : Theme.of(context).colorScheme.primary,
+                        onPressed: () {},
+                        icon: const Icon(Icons.add),
+                        label: const Text("New Entry")),
+                    Spacer(),
                   ],
                 ),
               ),
