@@ -56,81 +56,83 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             ],
           ),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(64.0),
-          child: Column(
-            children: <Widget>[
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: FittedBox(
-                            child: SizedBox(
-                              width: 100,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "01:53",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headlineMedium,
-                                  ),
-                                ],
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(32.0),
+            child: Column(
+              children: <Widget>[
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: FittedBox(
+                              child: SizedBox(
+                                width: 84,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "01:53",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headlineMedium,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    AnimatedOpacity(
-                      duration: const Duration(milliseconds: 200),
-                      opacity: _running ? 1.0 : 0.0,
-                      child: Column(
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 32.0),
-                            child: Divider(),
-                          ),
-                          SessionInfo(),
                         ],
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              NavBar(
-                running: _running,
-                left: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => RecordsPage(
-                      running: _running,
-                    ),
+                      AnimatedOpacity(
+                        duration: const Duration(milliseconds: 200),
+                        opacity: _running ? 1.0 : 0.0,
+                        child: Column(
+                          children: const [
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 16.0),
+                              child: Divider(),
+                            ),
+                            SessionInfo(),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                middle: _toggleRunning,
-                right: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => StatsPage(
-                      running: _running,
+                NavBar(
+                  running: _running,
+                  left: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RecordsPage(
+                        running: _running,
+                      ),
                     ),
                   ),
+                  middle: _toggleRunning,
+                  right: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => StatsPage(
+                        running: _running,
+                      ),
+                    ),
+                  ),
+                  iconLeft: Icons.calendar_month,
+                  iconMiddle: AnimatedIcon(
+                    icon: AnimatedIcons.play_pause,
+                    progress: _animation,
+                  ),
+                  iconRight: Icons.bar_chart_outlined,
+                  labelLeft: "Records",
+                  labelRight: "Stats",
                 ),
-                iconLeft: Icons.calendar_month,
-                iconMiddle: AnimatedIcon(
-                  icon: AnimatedIcons.play_pause,
-                  progress: _animation,
-                ),
-                iconRight: Icons.bar_chart_outlined,
-                labelLeft: "Records",
-                labelRight: "Stats",
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

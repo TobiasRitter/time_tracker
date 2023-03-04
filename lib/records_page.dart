@@ -12,35 +12,34 @@ class RecordsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                running
-                    ? Theme.of(context).colorScheme.secondary.withAlpha(150)
-                    : Theme.of(context).colorScheme.primary.withAlpha(75),
-                Colors.transparent
-              ],
-            ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              running
+                  ? Theme.of(context).colorScheme.secondary.withAlpha(150)
+                  : Theme.of(context).colorScheme.primary.withAlpha(75),
+              Colors.transparent
+            ],
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(64.0),
-            child: Column(
-              children: [
-                const Expanded(
-                  flex: 2,
-                  child: Calendar(),
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 32.0),
-                  child: Divider(),
-                ),
-                const Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 32.0),
+        ),
+        child: SafeArea(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(32.0),
+              child: Column(
+                children: [
+                  const Expanded(
+                    flex: 2,
+                    child: Calendar(),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 16.0),
+                    child: Divider(),
+                  ),
+                  const Expanded(
                     child: FadingListView(
                       children: [
                         TimeRecord(),
@@ -52,16 +51,16 @@ class RecordsPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                ),
-                NavBar(
-                  running: running,
-                  left: () => Navigator.pop(context),
-                  middle: () {},
-                  iconLeft: Icons.arrow_back,
-                  iconMiddle: const Icon(Icons.add),
-                  labelLeft: "Back",
-                ),
-              ],
+                  NavBar(
+                    running: running,
+                    left: () => Navigator.pop(context),
+                    middle: () {},
+                    iconLeft: Icons.arrow_back,
+                    iconMiddle: const Icon(Icons.add),
+                    labelLeft: "Back",
+                  ),
+                ],
+              ),
             ),
           ),
         ),

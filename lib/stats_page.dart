@@ -12,27 +12,26 @@ class StatsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                running
-                    ? Theme.of(context).colorScheme.secondary.withAlpha(150)
-                    : Theme.of(context).colorScheme.primary.withAlpha(75),
-                Colors.transparent
-              ],
-            ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              running
+                  ? Theme.of(context).colorScheme.secondary.withAlpha(150)
+                  : Theme.of(context).colorScheme.primary.withAlpha(75),
+              Colors.transparent
+            ],
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(64.0),
-            child: Column(children: [
-              Expanded(
-                flex: 2,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(32.0, 0.0, 32.0, 16.0),
+        ),
+        child: SafeArea(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(32.0),
+              child: Column(children: [
+                Expanded(
+                  flex: 2,
                   child: BarChart(
                     BarChartData(
                       alignment: BarChartAlignment.spaceBetween,
@@ -76,41 +75,32 @@ class StatsPage extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 32.0),
-                child: Divider(),
-              ),
-              const Expanded(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 32.0),
-                  child: FadingListView(
-                    children: [
-                      BalanceEntry(
-                        title: "Week",
-                        icon: Icons.calendar_today,
-                      ),
-                      BalanceEntry(
-                        title: "Month",
-                        icon: Icons.calendar_month,
-                      ),
-                      BalanceEntry(
-                        title: "Total",
-                        icon: Icons.watch_later_outlined,
-                      ),
-                    ],
-                  ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 16.0),
+                  child: Divider(),
                 ),
-              ),
-              NavBar(
-                running: running,
-                left: () => Navigator.pop(context),
-                middle: () {},
-                iconLeft: Icons.arrow_back,
-                iconMiddle: const Icon(Icons.file_download),
-                labelLeft: "Back",
-              ),
-            ]),
+                const BalanceEntry(
+                  title: "Week",
+                  icon: Icons.calendar_today,
+                ),
+                const BalanceEntry(
+                  title: "Month",
+                  icon: Icons.calendar_month,
+                ),
+                const BalanceEntry(
+                  title: "Total",
+                  icon: Icons.watch_later_outlined,
+                ),
+                NavBar(
+                  running: running,
+                  left: () => Navigator.pop(context),
+                  middle: () {},
+                  iconLeft: Icons.arrow_back,
+                  iconMiddle: const Icon(Icons.file_download),
+                  labelLeft: "Back",
+                ),
+              ]),
+            ),
           ),
         ),
       ),

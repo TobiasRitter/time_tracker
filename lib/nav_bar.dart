@@ -31,51 +31,64 @@ class NavBar extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: Center(
-              child: FloatingActionButton.extended(
-                heroTag: "left",
-                foregroundColor: Theme.of(context).colorScheme.primary,
-                backgroundColor: Colors.transparent,
-                onPressed: left,
-                label: Opacity(
-                  opacity: 0.5,
-                  child: Text(labelLeft),
-                ),
-                icon: Opacity(
-                  opacity: 0.5,
-                  child: Icon(iconLeft),
+            child: FittedBox(
+              child: SizedBox(
+                width: 400,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Center(
+                        child: FloatingActionButton.extended(
+                          heroTag: "left",
+                          foregroundColor:
+                              Theme.of(context).colorScheme.primary,
+                          backgroundColor: Colors.transparent,
+                          onPressed: left,
+                          label: Opacity(
+                            opacity: 0.5,
+                            child: Text(labelLeft),
+                          ),
+                          icon: Opacity(
+                            opacity: 0.5,
+                            child: Icon(iconLeft),
+                          ),
+                        ),
+                      ),
+                    ),
+                    FloatingActionButton.large(
+                      heroTag: "middle",
+                      backgroundColor: running
+                          ? Theme.of(context).colorScheme.secondary
+                          : Theme.of(context).colorScheme.primary,
+                      onPressed: middle,
+                      child: iconMiddle,
+                    ),
+                    right != null && labelRight != null && iconRight != null
+                        ? Expanded(
+                            child: Center(
+                              child: FloatingActionButton.extended(
+                                heroTag: "right",
+                                foregroundColor:
+                                    Theme.of(context).colorScheme.primary,
+                                backgroundColor: Colors.transparent,
+                                onPressed: right,
+                                label: Opacity(
+                                  opacity: 0.5,
+                                  child: Text(labelRight!),
+                                ),
+                                icon: Opacity(
+                                  opacity: 0.5,
+                                  child: Icon(iconRight),
+                                ),
+                              ),
+                            ),
+                          )
+                        : const Spacer(),
+                  ],
                 ),
               ),
             ),
           ),
-          FloatingActionButton.large(
-            heroTag: "middle",
-            backgroundColor: running
-                ? Theme.of(context).colorScheme.secondary
-                : Theme.of(context).colorScheme.primary,
-            onPressed: middle,
-            child: iconMiddle,
-          ),
-          right != null && labelRight != null && iconRight != null
-              ? Expanded(
-                  child: Center(
-                    child: FloatingActionButton.extended(
-                      heroTag: "right",
-                      foregroundColor: Theme.of(context).colorScheme.primary,
-                      backgroundColor: Colors.transparent,
-                      onPressed: right,
-                      label: Opacity(
-                        opacity: 0.5,
-                        child: Text(labelRight!),
-                      ),
-                      icon: Opacity(
-                        opacity: 0.5,
-                        child: Icon(iconRight),
-                      ),
-                    ),
-                  ),
-                )
-              : const Spacer(),
         ],
       ),
     );
