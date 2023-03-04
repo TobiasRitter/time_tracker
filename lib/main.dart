@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
         ),
         colorScheme: ColorScheme.fromSwatch().copyWith(
           primary: Colors.white,
-          secondary: Colors.blueAccent,
+          secondary: Colors.indigoAccent,
           brightness: Brightness.dark,
         ),
       ),

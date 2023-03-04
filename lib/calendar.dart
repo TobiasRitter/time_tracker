@@ -41,20 +41,31 @@ class _CalendarState extends State<Calendar> {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 32.0),
+          padding: const EdgeInsets.only(bottom: 32.0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              IconButton(
-                  onPressed: showPreviousMonth,
-                  icon: const Icon(Icons.chevron_left_rounded)),
-              Text(
-                DateFormat('MMMM yyyy').format(focusedDay),
-                style: Theme.of(context).textTheme.headlineMedium,
+              Expanded(
+                child: FittedBox(
+                  child: SizedBox(
+                    width: 400,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        IconButton(
+                            onPressed: showPreviousMonth,
+                            icon: const Icon(Icons.chevron_left_rounded)),
+                        Text(
+                          DateFormat('MMMM yyyy').format(focusedDay),
+                          style: Theme.of(context).textTheme.headlineMedium,
+                        ),
+                        IconButton(
+                            onPressed: showNextMonth,
+                            icon: const Icon(Icons.chevron_right_rounded)),
+                      ],
+                    ),
+                  ),
+                ),
               ),
-              IconButton(
-                  onPressed: showNextMonth,
-                  icon: const Icon(Icons.chevron_right_rounded)),
             ],
           ),
         ),

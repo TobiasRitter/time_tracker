@@ -81,11 +81,11 @@ class StatsPage extends StatelessWidget {
                 ),
                 const BalanceEntry(
                   title: "Week",
-                  icon: Icons.calendar_today,
+                  icon: Icons.calendar_today_outlined,
                 ),
                 const BalanceEntry(
                   title: "Month",
-                  icon: Icons.calendar_month,
+                  icon: Icons.calendar_month_outlined,
                 ),
                 const BalanceEntry(
                   title: "Total",
@@ -96,7 +96,7 @@ class StatsPage extends StatelessWidget {
                   left: () => Navigator.pop(context),
                   middle: () {},
                   iconLeft: Icons.arrow_back,
-                  iconMiddle: const Icon(Icons.file_download),
+                  iconMiddle: const Icon(Icons.download_outlined),
                   labelLeft: "Back",
                 ),
               ]),

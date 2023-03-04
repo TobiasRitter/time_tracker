@@ -122,7 +122,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       ),
                     ),
                   ),
-                  iconLeft: Icons.calendar_month,
+                  iconLeft: Icons.calendar_month_outlined,
                   iconMiddle: AnimatedIcon(
                     icon: AnimatedIcons.play_pause,
                     progress: _animation,
