@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:time_tracker/balance_entry.dart';
+import 'package:time_tracker/column_chart.dart';
 import 'package:time_tracker/hero_divider.dart';
 import 'package:time_tracker/nav_bar.dart';
 
@@ -30,49 +31,9 @@ class StatsPage extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(32.0),
               child: Column(children: [
-                Expanded(
-                  child: BarChart(
-                    BarChartData(
-                      alignment: BarChartAlignment.spaceBetween,
-                      titlesData: FlTitlesData(
-                        show: true,
-                        rightTitles: AxisTitles(
-                          sideTitles: SideTitles(showTitles: false),
-                        ),
-                        topTitles: AxisTitles(
-                          sideTitles: SideTitles(showTitles: false),
-                        ),
-                        bottomTitles: AxisTitles(
-                          sideTitles: SideTitles(
-                            showTitles: true,
-                            getTitlesWidget: (value, _) => Padding(
-                              padding: const EdgeInsets.only(top: 64.0),
-                              child: Text(
-                                getWeekDay(value.toInt()),
-                                style: Theme.of(context).textTheme.bodyMedium,
-                              ),
-                            ),
-                            reservedSize: 96,
-                          ),
-                        ),
-                        leftTitles: AxisTitles(
-                          sideTitles: SideTitles(
-                            showTitles: false,
-                          ),
-                        ),
-                      ),
-                      borderData: FlBorderData(show: false),
-                      rangeAnnotations: RangeAnnotations(),
-                      gridData: FlGridData(show: false),
-                      barGroups: [
-                        getBar(0, 1.0, Theme.of(context).colorScheme.primary),
-                        getBar(1, 1.5, Theme.of(context).colorScheme.primary),
-                        getBar(2, 0.5, Theme.of(context).colorScheme.primary),
-                        getBar(3, -1.0, Theme.of(context).colorScheme.primary),
-                        getBar(4, -0.5, Theme.of(context).colorScheme.primary),
-                      ],
-                    ),
-                  ),
+                const Expanded(
+                  flex: 2,
+                  child: ColumnChart(),
                 ),
                 const HeroDivider(),
                 Expanded(
@@ -106,18 +67,6 @@ class StatsPage extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  String getWeekDay(int x) {
-    List<String> weekdays = ["M", "T", "W", "T", "F"];
-    return weekdays[x];
-  }
-
-  BarChartGroupData getBar(int x, double y, Color color) {
-    return BarChartGroupData(
-      x: x,
-      barRods: [BarChartRodData(toY: y, color: color, width: 32.0)],
     );
   }
 }

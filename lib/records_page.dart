@@ -33,6 +33,7 @@ class RecordsPage extends StatelessWidget {
               child: Column(
                 children: [
                   const Expanded(
+                    flex: 2,
                     child: Calendar(),
                   ),
                   const HeroDivider(),

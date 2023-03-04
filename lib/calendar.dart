@@ -49,18 +49,26 @@ class _CalendarState extends State<Calendar> {
                   child: SizedBox(
                     width: 800,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        IconButton(
-                            onPressed: showPreviousMonth,
-                            icon: const Icon(Icons.chevron_left_rounded)),
-                        Text(
-                          DateFormat('MMMM yyyy').format(focusedDay),
-                          style: Theme.of(context).textTheme.headlineMedium,
+                        Expanded(
+                          child: IconButton(
+                              onPressed: showPreviousMonth,
+                              icon: const Icon(Icons.chevron_left_rounded)),
                         ),
-                        IconButton(
-                            onPressed: showNextMonth,
-                            icon: const Icon(Icons.chevron_right_rounded)),
+                        Expanded(
+                          flex: 5,
+                          child: Center(
+                            child: Text(
+                              DateFormat('MMMM yyyy').format(focusedDay),
+                              style: Theme.of(context).textTheme.headlineMedium,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: IconButton(
+                              onPressed: showNextMonth,
+                              icon: const Icon(Icons.chevron_right_rounded)),
+                        ),
                       ],
                     ),
                   ),

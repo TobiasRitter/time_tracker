@@ -63,7 +63,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             child: Column(
               children: <Widget>[
                 Expanded(
+                  flex: 2,
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Expanded(
                         child: FittedBox(

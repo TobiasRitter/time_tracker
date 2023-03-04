@@ -15,17 +15,28 @@ class TimeRecord extends StatelessWidget {
                 width: 560,
                 child: Row(
                   children: [
-                    Text(
-                      "10:00 - 11:30",
-                      style: Theme.of(context).textTheme.headlineMedium,
+                    const Expanded(
+                      child: Icon(Icons.timer_outlined),
                     ),
-                    const SizedBox(width: 32.0),
-                    Text(
-                      "1h 30min",
-                      style: Theme.of(context).textTheme.headlineSmall,
+                    Expanded(
+                      flex: 5,
+                      child: Row(
+                        children: [
+                          Text(
+                            "10:00 - 11:30",
+                            style: Theme.of(context).textTheme.headlineMedium,
+                          ),
+                          const SizedBox(width: 32.0),
+                          Text(
+                            "1h 30min",
+                            style: Theme.of(context).textTheme.headlineSmall,
+                          ),
+                        ],
+                      ),
                     ),
-                    const Spacer(),
-                    const Icon(Icons.edit_outlined),
+                    const Expanded(
+                      child: Icon(Icons.edit_outlined),
+                    ),
                   ],
                 ),
               ),
