@@ -9,17 +9,28 @@ class TimeRecord extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: Row(
         children: [
-          Text(
-            "10:00 - 11:30",
-            style: Theme.of(context).textTheme.headlineMedium,
+          Expanded(
+            child: FittedBox(
+              child: SizedBox(
+                width: 560,
+                child: Row(
+                  children: [
+                    Text(
+                      "10:00 - 11:30",
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
+                    const SizedBox(width: 32.0),
+                    Text(
+                      "1 hour 30 minutes",
+                      style: Theme.of(context).textTheme.headlineSmall,
+                    ),
+                    const Spacer(),
+                    const Icon(Icons.edit_outlined),
+                  ],
+                ),
+              ),
+            ),
           ),
-          const SizedBox(width: 32.0),
-          Text(
-            "1 hour 30 minutes",
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
-          const Spacer(),
-          const Icon(Icons.edit_outlined),
         ],
       ),
     );

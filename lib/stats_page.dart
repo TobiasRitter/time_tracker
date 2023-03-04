@@ -80,17 +80,20 @@ class StatsPage extends StatelessWidget {
                 child: Divider(),
               ),
               Expanded(
-                child: Column(
-                  children: const [
-                    BalanceEntry(
-                      title: "This week",
-                      icon: Icons.calendar_today,
-                    ),
-                    BalanceEntry(
-                      title: "Total balance",
-                      icon: Icons.calendar_month,
-                    ),
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                  child: ListView(
+                    children: const [
+                      BalanceEntry(
+                        title: "This week",
+                        icon: Icons.calendar_today,
+                      ),
+                      BalanceEntry(
+                        title: "Total balance",
+                        icon: Icons.calendar_month,
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Padding(
