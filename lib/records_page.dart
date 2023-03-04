@@ -45,6 +45,8 @@ class RecordsPage extends StatelessWidget {
                         TimeRecord(),
                         TimeRecord(),
                         TimeRecord(),
+                        TimeRecord(),
+                        TimeRecord(),
                       ],
                     ),
                   ),

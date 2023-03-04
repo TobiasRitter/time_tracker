@@ -86,15 +86,15 @@ class StatsPage extends StatelessWidget {
                   child: ListView(
                     children: const [
                       BalanceEntry(
-                        title: "This week",
+                        title: "Week",
                         icon: Icons.calendar_today,
                       ),
                       BalanceEntry(
-                        title: "This month",
+                        title: "Month",
                         icon: Icons.calendar_month,
                       ),
                       BalanceEntry(
-                        title: "Total balance",
+                        title: "Total",
                         icon: Icons.watch_later_outlined,
                       ),
                     ],
