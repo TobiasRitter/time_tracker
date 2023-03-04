@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:time_tracker/balance_entry.dart';
+import 'package:time_tracker/fading_list_view.dart';
 import 'package:time_tracker/nav_bar.dart';
 
 class StatsPage extends StatelessWidget {
@@ -80,11 +81,11 @@ class StatsPage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(vertical: 32.0),
                 child: Divider(),
               ),
-              Expanded(
+              const Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                  child: ListView(
-                    children: const [
+                  padding: EdgeInsets.symmetric(horizontal: 32.0),
+                  child: FadingListView(
+                    children: [
                       BalanceEntry(
                         title: "Week",
                         icon: Icons.calendar_today,
