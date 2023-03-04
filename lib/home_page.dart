@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:time_tracker/nav_bar.dart';
 import 'package:time_tracker/records_page.dart';
+import 'package:time_tracker/session_info.dart';
 import 'package:time_tracker/stats_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -85,50 +86,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         ),
                       ],
                     ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 32.0),
-                      child: Divider(),
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: FittedBox(
-                            child: SizedBox(
-                              width: 480,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 16.0),
-                                    child: Icon(Icons.timer_outlined),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 16.0),
-                                    child: Text(
-                                      "10:00",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headlineMedium,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 16.0),
-                                    child: Text(
-                                      "1 hour 30 minutes",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headlineSmall,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                    AnimatedOpacity(
+                      duration: const Duration(milliseconds: 200),
+                      opacity: _running ? 1.0 : 0.0,
+                      child: Column(
+                        children: const [
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 32.0),
+                            child: Divider(),
                           ),
-                        ),
-                      ],
+                          SessionInfo(),
+                        ],
+                      ),
                     ),
                   ],
                 ),
