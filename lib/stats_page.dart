@@ -1,4 +1,3 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:time_tracker/balance_entry.dart';
 import 'package:time_tracker/column_chart.dart';
@@ -33,7 +32,15 @@ class StatsPage extends StatelessWidget {
               child: Column(children: [
                 const Expanded(
                   flex: 2,
-                  child: ColumnChart(),
+                  child: ColumnChart(
+                    values: {
+                      "Mo": 1.0,
+                      "Tu": 1.5,
+                      "We": 0.5,
+                      "Th": -1.0,
+                      "Fr": -0.5
+                    },
+                  ),
                 ),
                 const HeroDivider(),
                 Expanded(
@@ -42,14 +49,17 @@ class StatsPage extends StatelessWidget {
                       BalanceEntry(
                         title: "Week",
                         icon: Icons.calendar_today_outlined,
+                        duration: Duration(hours: 1, minutes: 30),
                       ),
                       BalanceEntry(
                         title: "Month",
                         icon: Icons.calendar_month_outlined,
+                        duration: Duration(hours: 2, minutes: 40),
                       ),
                       BalanceEntry(
                         title: "Total",
                         icon: Icons.watch_later_outlined,
+                        duration: Duration(hours: 5, minutes: 10),
                       ),
                     ],
                   ),

@@ -1,21 +1,28 @@
+import 'package:collection/collection.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class ColumnChart extends StatelessWidget {
-  const ColumnChart({super.key});
+  final Map<String, double> values;
 
-  String getWeekDay(int x) {
-    List<String> weekdays = ["M", "T", "W", "T", "F"];
-    return weekdays[x];
+  const ColumnChart({super.key, required this.values});
+
+  Text getDiffText(BuildContext context, int index) {
+    double value = values.values.elementAt(index);
+    String prefix = value > 0 ? "+" : "";
+    return Text(
+      prefix + value.toString(),
+      style: Theme.of(context).textTheme.bodyMedium,
+    );
   }
 
-  BarChartGroupData getBar(int x, double y, Color color) {
-    return BarChartGroupData(
-      x: x,
-      barRods: [BarChartRodData(toY: y, color: color, width: 32.0)],
-    );
+  List<BarChartGroupData> getBarGroups(Color color) {
+    return values.values
+        .mapIndexed((index, value) => BarChartGroupData(
+              x: index,
+              barRods: [BarChartRodData(toY: value, color: color, width: 32.0)],
+            ))
+        .toList();
   }
 
   @override
@@ -34,14 +41,22 @@ class ColumnChart extends StatelessWidget {
           bottomTitles: AxisTitles(
             sideTitles: SideTitles(
               showTitles: true,
-              getTitlesWidget: (value, _) => Padding(
+              getTitlesWidget: (index, _) => Padding(
                 padding: const EdgeInsets.only(top: 64.0),
-                child: Text(
-                  getWeekDay(value.toInt()),
-                  style: Theme.of(context).textTheme.bodyMedium,
+                child: Column(
+                  children: [
+                    Text(
+                      values.keys.elementAt(index.toInt()),
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    const SizedBox(
+                      height: 8.0,
+                    ),
+                    getDiffText(context, index.toInt()),
+                  ],
                 ),
               ),
-              reservedSize: 96,
+              reservedSize: 128,
             ),
           ),
           leftTitles: AxisTitles(
@@ -53,13 +68,7 @@ class ColumnChart extends StatelessWidget {
         borderData: FlBorderData(show: false),
         rangeAnnotations: RangeAnnotations(),
         gridData: FlGridData(show: false),
-        barGroups: [
-          getBar(0, 1.0, Theme.of(context).colorScheme.primary),
-          getBar(1, 1.5, Theme.of(context).colorScheme.primary),
-          getBar(2, 0.5, Theme.of(context).colorScheme.primary),
-          getBar(3, -1.0, Theme.of(context).colorScheme.primary),
-          getBar(4, -0.5, Theme.of(context).colorScheme.primary),
-        ],
+        barGroups: getBarGroups(Theme.of(context).colorScheme.primary),
       ),
     );
   }
