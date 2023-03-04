@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Time Tracker',
       theme: ThemeData(
+        dividerColor: Colors.white.withOpacity(0.5),
         floatingActionButtonTheme: const FloatingActionButtonThemeData(
           foregroundColor: Colors.black,
         ),

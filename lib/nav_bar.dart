@@ -43,6 +43,7 @@ class NavBar extends StatelessWidget {
                           foregroundColor:
                               Theme.of(context).colorScheme.primary,
                           backgroundColor: Colors.transparent,
+                          elevation: 0,
                           onPressed: left,
                           label: Opacity(
                             opacity: 0.5,
@@ -71,6 +72,7 @@ class NavBar extends StatelessWidget {
                                 foregroundColor:
                                     Theme.of(context).colorScheme.primary,
                                 backgroundColor: Colors.transparent,
+                                elevation: 0,
                                 onPressed: right,
                                 label: Opacity(
                                   opacity: 0.5,

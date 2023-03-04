@@ -41,13 +41,13 @@ class _CalendarState extends State<Calendar> {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(bottom: 32.0),
+          padding: const EdgeInsets.only(bottom: 16.0),
           child: Row(
             children: [
               Expanded(
                 child: FittedBox(
                   child: SizedBox(
-                    width: 400,
+                    width: 560,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -71,6 +71,7 @@ class _CalendarState extends State<Calendar> {
         ),
         Expanded(
           child: TableCalendar(
+            onPageChanged: (focusedDay) => updateFocusedDay(focusedDay),
             headerVisible: false,
             onDaySelected: (selectedDay, _) => updateFocusedDay(selectedDay),
             startingDayOfWeek: StartingDayOfWeek.monday,

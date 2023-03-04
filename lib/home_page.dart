@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               _running
                   ? Theme.of(context).colorScheme.secondary.withAlpha(150)
                   : Theme.of(context).colorScheme.primary.withAlpha(75),
-              Colors.transparent
+              Colors.transparent,
             ],
           ),
         ),
@@ -61,6 +61,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             padding: const EdgeInsets.all(32.0),
             child: Column(
               children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: const [
+                    IconButton(
+                      onPressed: null,
+                      icon: Opacity(
+                        opacity: 0.5,
+                        child: Icon(Icons.settings_outlined),
+                      ),
+                    ),
+                  ],
+                ),
                 Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
