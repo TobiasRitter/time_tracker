@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:time_tracker/nav_bar.dart';
 import 'package:time_tracker/records_page.dart';
 import 'package:time_tracker/stats_page.dart';
 
@@ -132,59 +133,33 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 64.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Center(
-                        child: FloatingActionButton.extended(
-                          heroTag: "records",
-                          foregroundColor:
-                              Theme.of(context).colorScheme.tertiary,
-                          backgroundColor: Colors.transparent,
-                          onPressed: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => RecordsPage(
-                                        running: _running,
-                                      ))),
-                          label: const Text("Records"),
-                          icon: const Icon(Icons.calendar_month),
-                        ),
-                      ),
+              NavBar(
+                running: _running,
+                left: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => RecordsPage(
+                      running: _running,
                     ),
-                    FloatingActionButton.large(
-                      heroTag: "main",
-                      backgroundColor: _running
-                          ? Theme.of(context).colorScheme.secondary
-                          : Theme.of(context).colorScheme.primary,
-                      onPressed: _toggleRunning,
-                      child: AnimatedIcon(
-                        icon: AnimatedIcons.play_pause,
-                        progress: _animation,
-                      ),
-                    ),
-                    Expanded(
-                      child: Center(
-                        child: FloatingActionButton.extended(
-                          heroTag: "stats",
-                          foregroundColor:
-                              Theme.of(context).colorScheme.tertiary,
-                          backgroundColor: Colors.transparent,
-                          onPressed: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => StatsPage(
-                                        running: _running,
-                                      ))),
-                          label: const Text("Stats"),
-                          icon: const Icon(Icons.bar_chart_outlined),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
+                middle: _toggleRunning,
+                right: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => StatsPage(
+                      running: _running,
+                    ),
+                  ),
+                ),
+                iconLeft: Icons.calendar_month,
+                iconMiddle: AnimatedIcon(
+                  icon: AnimatedIcons.play_pause,
+                  progress: _animation,
+                ),
+                iconRight: Icons.bar_chart_outlined,
+                labelLeft: "Records",
+                labelRight: "Stats",
               ),
             ],
           ),

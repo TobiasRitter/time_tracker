@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:time_tracker/balance_entry.dart';
+import 'package:time_tracker/nav_bar.dart';
 
 class StatsPage extends StatelessWidget {
   final bool running;
@@ -96,34 +97,13 @@ class StatsPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 64.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Center(
-                        child: FloatingActionButton.extended(
-                          heroTag: "records",
-                          foregroundColor:
-                              Theme.of(context).colorScheme.tertiary,
-                          backgroundColor: Colors.transparent,
-                          onPressed: () => Navigator.pop(context),
-                          label: const Text("Back"),
-                          icon: const Icon(Icons.arrow_back),
-                        ),
-                      ),
-                    ),
-                    FloatingActionButton.large(
-                      heroTag: "main",
-                      backgroundColor: running
-                          ? Theme.of(context).colorScheme.secondary
-                          : Theme.of(context).colorScheme.primary,
-                      onPressed: () {},
-                      child: const Icon(Icons.file_download),
-                    ),
-                    const Spacer(),
-                  ],
-                ),
+              NavBar(
+                running: running,
+                left: () => Navigator.pop(context),
+                middle: () {},
+                iconLeft: Icons.arrow_back,
+                iconMiddle: const Icon(Icons.file_download),
+                labelLeft: "Back",
               ),
             ]),
           ),
