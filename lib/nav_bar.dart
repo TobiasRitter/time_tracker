@@ -34,11 +34,17 @@ class NavBar extends StatelessWidget {
             child: Center(
               child: FloatingActionButton.extended(
                 heroTag: "left",
-                foregroundColor: Theme.of(context).colorScheme.tertiary,
+                foregroundColor: Theme.of(context).colorScheme.primary,
                 backgroundColor: Colors.transparent,
                 onPressed: left,
-                label: Text(labelLeft),
-                icon: Icon(iconLeft),
+                label: Opacity(
+                  opacity: 0.5,
+                  child: Text(labelLeft),
+                ),
+                icon: Opacity(
+                  opacity: 0.5,
+                  child: Icon(iconLeft),
+                ),
               ),
             ),
           ),
@@ -55,11 +61,17 @@ class NavBar extends StatelessWidget {
                   child: Center(
                     child: FloatingActionButton.extended(
                       heroTag: "right",
-                      foregroundColor: Theme.of(context).colorScheme.tertiary,
+                      foregroundColor: Theme.of(context).colorScheme.primary,
                       backgroundColor: Colors.transparent,
                       onPressed: right,
-                      label: Text(labelRight!),
-                      icon: Icon(iconRight),
+                      label: Opacity(
+                        opacity: 0.5,
+                        child: Text(labelRight!),
+                      ),
+                      icon: Opacity(
+                        opacity: 0.5,
+                        child: Icon(iconRight),
+                      ),
                     ),
                   ),
                 )
