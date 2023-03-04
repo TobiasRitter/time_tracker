@@ -71,16 +71,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         child: FittedBox(
                           child: SizedBox(
                             width: 84,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "01:53",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineMedium,
-                                ),
-                              ],
+                            child: Text(
+                              "01:53",
+                              style: Theme.of(context).textTheme.headlineMedium,
                             ),
                           ),
                         ),

@@ -30,13 +30,15 @@ class SessionInfo extends StatelessWidget {
                       style: Theme.of(context).textTheme.headlineMedium,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Text(
-                      running ? "1h 30min" : "Start timer",
-                      style: Theme.of(context).textTheme.headlineSmall,
-                    ),
-                  ),
+                  running
+                      ? Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Text(
+                            "1h 30min",
+                            style: Theme.of(context).textTheme.headlineSmall,
+                          ),
+                        )
+                      : Container(),
                 ],
               ),
             ),
