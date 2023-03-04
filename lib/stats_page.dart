@@ -90,8 +90,12 @@ class StatsPage extends StatelessWidget {
                         icon: Icons.calendar_today,
                       ),
                       BalanceEntry(
-                        title: "Total balance",
+                        title: "This month",
                         icon: Icons.calendar_month,
+                      ),
+                      BalanceEntry(
+                        title: "Total balance",
+                        icon: Icons.watch_later_outlined,
                       ),
                     ],
                   ),
