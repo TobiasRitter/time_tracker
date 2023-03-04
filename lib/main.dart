@@ -22,12 +22,6 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.black,
         iconTheme: const IconThemeData(color: Colors.white, size: 32.0),
         textTheme: GoogleFonts.oswaldTextTheme(textTheme).copyWith(
-          headlineLarge: GoogleFonts.oswald(
-            textStyle: const TextStyle(
-              fontSize: 10000,
-              color: Colors.white,
-            ),
-          ),
           headlineMedium: GoogleFonts.oswald(
             textStyle: const TextStyle(
               fontSize: 40,
@@ -35,9 +29,9 @@ class MyApp extends StatelessWidget {
             ),
           ),
           headlineSmall: GoogleFonts.oswald(
-            textStyle: const TextStyle(
+            textStyle: TextStyle(
               fontSize: 40,
-              color: Colors.grey,
+              color: Colors.white.withOpacity(0.5),
             ),
           ),
           bodyLarge: GoogleFonts.oswald(
@@ -47,16 +41,15 @@ class MyApp extends StatelessWidget {
             ),
           ),
           bodyMedium: GoogleFonts.oswald(
-            textStyle: const TextStyle(
+            textStyle: TextStyle(
               fontSize: 18,
-              color: Colors.grey,
+              color: Colors.white.withOpacity(0.5),
             ),
           ),
         ),
         colorScheme: ColorScheme.fromSwatch().copyWith(
           primary: Colors.white,
           secondary: Colors.blueAccent,
-          tertiary: Colors.grey,
           brightness: Brightness.dark,
         ),
       ),
