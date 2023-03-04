@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:time_tracker/utils.dart';
 
 class TimeRecord extends StatelessWidget {
-  const TimeRecord({super.key});
+  final DateTime start;
+  final DateTime stop;
+
+  const TimeRecord({super.key, required this.start, required this.stop});
 
   @override
   Widget build(BuildContext context) {
+    String startString = DateFormat('HH:mm').format(start);
+    String stopString = DateFormat('HH:mm').format(stop);
+    Duration duration = stop.difference(start);
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: Row(
@@ -23,12 +32,12 @@ class TimeRecord extends StatelessWidget {
                       child: Row(
                         children: [
                           Text(
-                            "10:00 - 11:30",
+                            "$startString - $stopString",
                             style: Theme.of(context).textTheme.headlineMedium,
                           ),
                           const SizedBox(width: 32.0),
                           Text(
-                            "1h 30min",
+                            getHoursAndMinutes(duration),
                             style: Theme.of(context).textTheme.headlineSmall,
                           ),
                         ],

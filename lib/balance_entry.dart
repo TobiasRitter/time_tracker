@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:time_tracker/utils.dart';
 
 class BalanceEntry extends StatelessWidget {
   final Duration duration;
@@ -14,10 +15,6 @@ class BalanceEntry extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int overallMinutes = duration.inMinutes;
-    int hours = (overallMinutes / 60).floor();
-    int minutes = overallMinutes - 60 * hours;
-
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: Row(
@@ -36,7 +33,7 @@ class BalanceEntry extends StatelessWidget {
                     ),
                     const Spacer(),
                     Text(
-                      "${hours}h ${minutes}min",
+                      getHoursAndMinutes(duration),
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
                   ],

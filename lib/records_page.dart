@@ -37,15 +37,25 @@ class RecordsPage extends StatelessWidget {
                     child: Calendar(),
                   ),
                   const HeroDivider(),
-                  const Expanded(
+                  Expanded(
                     child: FadingListView(
                       children: [
-                        TimeRecord(),
-                        TimeRecord(),
-                        TimeRecord(),
-                        TimeRecord(),
-                        TimeRecord(),
-                        TimeRecord(),
+                        TimeRecord(
+                          start: DateTime(2023, 1, 1, 10, 0),
+                          stop: DateTime(2023, 1, 1, 11, 30),
+                        ),
+                        TimeRecord(
+                          start: DateTime(2023, 1, 1, 12, 0),
+                          stop: DateTime(2023, 1, 1, 14, 30),
+                        ),
+                        TimeRecord(
+                          start: DateTime(2023, 1, 1, 15, 0),
+                          stop: DateTime(2023, 1, 1, 15, 30),
+                        ),
+                        TimeRecord(
+                          start: DateTime(2023, 1, 1, 16, 0),
+                          stop: DateTime(2023, 1, 1, 16, 45),
+                        ),
                       ],
                     ),
                   ),
