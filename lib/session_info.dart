@@ -30,15 +30,20 @@ class SessionInfo extends StatelessWidget {
                       style: Theme.of(context).textTheme.headlineMedium,
                     ),
                   ),
-                  running
-                      ? Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: Text(
-                            "1h 30min",
-                            style: Theme.of(context).textTheme.headlineSmall,
-                          ),
-                        )
-                      : Container(),
+                  AnimatedSize(
+                    duration: const Duration(milliseconds: 200),
+                    child: SizedBox(
+                      width: running ? null : 0.0,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Text(
+                          "1h 30min",
+                          maxLines: 1,
+                          style: Theme.of(context).textTheme.headlineSmall,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

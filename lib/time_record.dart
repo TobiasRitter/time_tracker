@@ -44,7 +44,7 @@ class TimeRecord extends StatelessWidget {
                       ),
                     ),
                     const Expanded(
-                      child: Icon(Icons.edit_outlined),
+                      child: Icon(Icons.edit),
                     ),
                   ],
                 ),

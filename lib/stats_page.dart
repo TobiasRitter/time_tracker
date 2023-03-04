@@ -48,12 +48,12 @@ class StatsPage extends StatelessWidget {
                     children: const [
                       BalanceEntry(
                         title: "Week",
-                        icon: Icons.calendar_today_outlined,
+                        icon: Icons.calendar_today,
                         duration: Duration(hours: 1, minutes: 30),
                       ),
                       BalanceEntry(
                         title: "Month",
-                        icon: Icons.calendar_month_outlined,
+                        icon: Icons.calendar_month,
                         duration: Duration(hours: 2, minutes: 40),
                       ),
                       BalanceEntry(
@@ -69,7 +69,7 @@ class StatsPage extends StatelessWidget {
                   left: () => Navigator.pop(context),
                   middle: () {},
                   iconLeft: Icons.arrow_back,
-                  iconMiddle: const Icon(Icons.download_outlined),
+                  iconMiddle: const Icon(Icons.share),
                   labelLeft: "Back",
                 ),
               ]),
