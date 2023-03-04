@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:time_tracker/calendar.dart';
 import 'package:time_tracker/fading_list_view.dart';
+import 'package:time_tracker/hero_divider.dart';
 import 'package:time_tracker/nav_bar.dart';
 import 'package:time_tracker/time_record.dart';
 
@@ -32,13 +33,9 @@ class RecordsPage extends StatelessWidget {
               child: Column(
                 children: [
                   const Expanded(
-                    flex: 2,
                     child: Calendar(),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 16.0),
-                    child: Divider(),
-                  ),
+                  const HeroDivider(),
                   const Expanded(
                     child: FadingListView(
                       children: [

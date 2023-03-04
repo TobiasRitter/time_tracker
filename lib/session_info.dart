@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class SessionInfo extends StatelessWidget {
+  final bool running;
+
   const SessionInfo({
     super.key,
+    required this.running,
   });
 
   @override
@@ -23,14 +26,14 @@ class SessionInfo extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
-                      "10:00",
+                      running ? "10:00" : "--:--",
                       style: Theme.of(context).textTheme.headlineMedium,
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
-                      "1 hour 30 minutes",
+                      running ? "1h 30min" : "Start timer",
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
                   ),

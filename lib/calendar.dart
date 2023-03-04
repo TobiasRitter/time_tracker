@@ -47,7 +47,7 @@ class _CalendarState extends State<Calendar> {
               Expanded(
                 child: FittedBox(
                   child: SizedBox(
-                    width: 560,
+                    width: 800,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

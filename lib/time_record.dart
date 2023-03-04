@@ -21,7 +21,7 @@ class TimeRecord extends StatelessWidget {
                     ),
                     const SizedBox(width: 32.0),
                     Text(
-                      "1 hour 30 minutes",
+                      "1h 30min",
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
                     const Spacer(),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:time_tracker/hero_divider.dart';
 import 'package:time_tracker/nav_bar.dart';
 import 'package:time_tracker/records_page.dart';
 import 'package:time_tracker/session_info.dart';
@@ -61,60 +62,39 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             padding: const EdgeInsets.all(32.0),
             child: Column(
               children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: const [
-                    IconButton(
-                      onPressed: null,
-                      icon: Opacity(
-                        opacity: 0.5,
-                        child: Icon(Icons.settings_outlined),
-                      ),
-                    ),
-                  ],
-                ),
                 Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  child: Row(
                     children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            child: FittedBox(
-                              child: SizedBox(
-                                width: 84,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "01:53",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headlineMedium,
-                                    ),
-                                  ],
+                      Expanded(
+                        child: FittedBox(
+                          child: SizedBox(
+                            width: 84,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "01:53",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium,
                                 ),
-                              ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
-                      AnimatedOpacity(
-                        duration: const Duration(milliseconds: 200),
-                        opacity: _running ? 1.0 : 0.0,
-                        child: Column(
-                          children: const [
-                            Padding(
-                              padding: EdgeInsets.symmetric(vertical: 16.0),
-                              child: Divider(),
-                            ),
-                            SessionInfo(),
-                          ],
                         ),
                       ),
                     ],
                   ),
                 ),
+                const HeroDivider(),
+                Expanded(
+                    child: Column(
+                  children: [
+                    SessionInfo(
+                      running: _running,
+                    ),
+                  ],
+                )),
                 NavBar(
                   running: _running,
                   left: () => Navigator.push(

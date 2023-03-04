@@ -1,7 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:time_tracker/balance_entry.dart';
-import 'package:time_tracker/fading_list_view.dart';
+import 'package:time_tracker/hero_divider.dart';
 import 'package:time_tracker/nav_bar.dart';
 
 class StatsPage extends StatelessWidget {
@@ -31,7 +31,6 @@ class StatsPage extends StatelessWidget {
               padding: const EdgeInsets.all(32.0),
               child: Column(children: [
                 Expanded(
-                  flex: 2,
                   child: BarChart(
                     BarChartData(
                       alignment: BarChartAlignment.spaceBetween,
@@ -75,21 +74,24 @@ class StatsPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 16.0),
-                  child: Divider(),
-                ),
-                const BalanceEntry(
-                  title: "Week",
-                  icon: Icons.calendar_today_outlined,
-                ),
-                const BalanceEntry(
-                  title: "Month",
-                  icon: Icons.calendar_month_outlined,
-                ),
-                const BalanceEntry(
-                  title: "Total",
-                  icon: Icons.watch_later_outlined,
+                const HeroDivider(),
+                Expanded(
+                  child: Column(
+                    children: const [
+                      BalanceEntry(
+                        title: "Week",
+                        icon: Icons.calendar_today_outlined,
+                      ),
+                      BalanceEntry(
+                        title: "Month",
+                        icon: Icons.calendar_month_outlined,
+                      ),
+                      BalanceEntry(
+                        title: "Total",
+                        icon: Icons.watch_later_outlined,
+                      ),
+                    ],
+                  ),
                 ),
                 NavBar(
                   running: running,
