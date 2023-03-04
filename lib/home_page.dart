@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:time_tracker/records_page.dart';
 import 'package:time_tracker/stats_page.dart';
@@ -63,10 +62,27 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    AutoSizeText(
-                      '01:53',
-                      style: Theme.of(context).textTheme.headlineLarge,
-                      maxLines: 1,
+                    Row(
+                      children: [
+                        Expanded(
+                          child: FittedBox(
+                            child: SizedBox(
+                              width: 100,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "01:53",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineMedium,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     const Padding(
                       padding: EdgeInsets.symmetric(vertical: 32.0),
