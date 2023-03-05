@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:time_tracker/calendar.dart';
 import 'package:time_tracker/fading_list_view.dart';
-import 'package:time_tracker/hero_divider.dart';
 import 'package:time_tracker/nav_bar.dart';
+import 'package:time_tracker/skeleton.dart';
 import 'package:time_tracker/time_record.dart';
 
 class RecordsPage extends StatelessWidget {
@@ -12,6 +12,37 @@ class RecordsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var navBar = NavBar(
+      running: running,
+      left: () => Navigator.pop(context),
+      middle: () {},
+      iconLeft: Icons.arrow_back,
+      iconMiddle: const Icon(Icons.add),
+      labelLeft: "Back",
+      iconRight: Icons.import_export,
+      labelRight: "Sync",
+      right: () {},
+    );
+    var fadingListView = FadingListView(
+      children: [
+        TimeRecord(
+          start: DateTime(2023, 1, 1, 10, 0),
+          stop: DateTime(2023, 1, 1, 11, 30),
+        ),
+        TimeRecord(
+          start: DateTime(2023, 1, 1, 12, 0),
+          stop: DateTime(2023, 1, 1, 14, 30),
+        ),
+        TimeRecord(
+          start: DateTime(2023, 1, 1, 15, 0),
+          stop: DateTime(2023, 1, 1, 15, 30),
+        ),
+        TimeRecord(
+          start: DateTime(2023, 1, 1, 16, 0),
+          stop: DateTime(2023, 1, 1, 16, 45),
+        ),
+      ],
+    );
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -27,51 +58,12 @@ class RecordsPage extends StatelessWidget {
           ),
         ),
         child: SafeArea(
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(32.0),
-              child: Column(
-                children: [
-                  const Expanded(
-                    flex: 2,
-                    child: Calendar(),
-                  ),
-                  const HeroDivider(),
-                  Expanded(
-                    child: FadingListView(
-                      children: [
-                        TimeRecord(
-                          start: DateTime(2023, 1, 1, 10, 0),
-                          stop: DateTime(2023, 1, 1, 11, 30),
-                        ),
-                        TimeRecord(
-                          start: DateTime(2023, 1, 1, 12, 0),
-                          stop: DateTime(2023, 1, 1, 14, 30),
-                        ),
-                        TimeRecord(
-                          start: DateTime(2023, 1, 1, 15, 0),
-                          stop: DateTime(2023, 1, 1, 15, 30),
-                        ),
-                        TimeRecord(
-                          start: DateTime(2023, 1, 1, 16, 0),
-                          stop: DateTime(2023, 1, 1, 16, 45),
-                        ),
-                      ],
-                    ),
-                  ),
-                  NavBar(
-                    running: running,
-                    left: () => Navigator.pop(context),
-                    middle: () {},
-                    iconLeft: Icons.arrow_back,
-                    iconMiddle: const Icon(Icons.add),
-                    labelLeft: "Back",
-                    iconRight: Icons.import_export,
-                    labelRight: "Sync",
-                    right: () {},
-                  ),
-                ],
-              ),
+          child: Padding(
+            padding: const EdgeInsets.all(32.0),
+            child: Skeleton(
+              upper: const Calendar(),
+              lower: fadingListView,
+              navBar: navBar,
             ),
           ),
         ),

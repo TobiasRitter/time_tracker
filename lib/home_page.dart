@@ -49,6 +49,41 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    var navBar = NavBar(
+      running: start != null,
+      left: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => RecordsPage(
+            running: start != null,
+          ),
+        ),
+      ),
+      middle: _toggleRunning,
+      right: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => StatsPage(
+            running: start != null,
+            workingHours: const {
+              "Mo": Duration(hours: 9),
+              "Tu": Duration(hours: 9, minutes: 30),
+              "We": Duration(hours: 8, minutes: 30),
+              "Th": Duration(hours: 7),
+              "Fr": Duration(hours: 7, minutes: 30),
+            },
+          ),
+        ),
+      ),
+      iconLeft: Icons.calendar_month,
+      iconMiddle: AnimatedIcon(
+        icon: AnimatedIcons.play_pause,
+        progress: _animation,
+      ),
+      iconRight: Icons.bar_chart,
+      labelLeft: "Records",
+      labelRight: "Stats",
+    );
     return Scaffold(
       body: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
@@ -73,41 +108,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 current: current,
                 start: start,
               ),
-              navBar: NavBar(
-                running: start != null,
-                left: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => RecordsPage(
-                      running: start != null,
-                    ),
-                  ),
-                ),
-                middle: _toggleRunning,
-                right: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => StatsPage(
-                      running: start != null,
-                      workingHours: const {
-                        "Mo": Duration(hours: 9),
-                        "Tu": Duration(hours: 9, minutes: 30),
-                        "We": Duration(hours: 8, minutes: 30),
-                        "Th": Duration(hours: 7),
-                        "Fr": Duration(hours: 7, minutes: 30),
-                      },
-                    ),
-                  ),
-                ),
-                iconLeft: Icons.calendar_month,
-                iconMiddle: AnimatedIcon(
-                  icon: AnimatedIcons.play_pause,
-                  progress: _animation,
-                ),
-                iconRight: Icons.bar_chart,
-                labelLeft: "Records",
-                labelRight: "Stats",
-              ),
+              navBar: navBar,
             ),
           ),
         ),
