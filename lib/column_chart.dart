@@ -12,7 +12,7 @@ class ColumnChart extends StatelessWidget {
     Duration duration = hourDifferences.values.elementAt(index);
     String prefix = duration.isNegative ? "" : "+";
     return Text(
-      prefix + getHoursAndMinutes(duration),
+      prefix + getHoursAndMinutes(duration, short: true),
       style: Theme.of(context).textTheme.bodyMedium,
     );
   }
