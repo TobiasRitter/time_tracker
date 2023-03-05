@@ -115,11 +115,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       builder: (context) => StatsPage(
                         running: start != null,
                         workingHours: const {
-                          "Mo": Duration(hours: 8),
-                          "Tu": Duration(hours: 8, minutes: 30),
-                          "We": Duration(hours: 7, minutes: 30),
-                          "Th": Duration(hours: 6),
-                          "Fr": Duration(hours: 6, minutes: 30),
+                          "Mo": Duration(hours: 9),
+                          "Tu": Duration(hours: 9, minutes: 30),
+                          "We": Duration(hours: 8, minutes: 30),
+                          "Th": Duration(hours: 7),
+                          "Fr": Duration(hours: 7, minutes: 30),
                         },
                       ),
                     ),

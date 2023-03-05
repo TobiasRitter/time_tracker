@@ -4,21 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:time_tracker/utils.dart';
 
 class ColumnChart extends StatelessWidget {
-  final Map<String, Duration> workingHours;
+  final Map<String, Duration> hourDifferences;
 
-  const ColumnChart({super.key, required this.workingHours});
+  const ColumnChart({super.key, required this.hourDifferences});
 
   Text getDiffText(BuildContext context, int index) {
-    Duration duration = workingHours.values.elementAt(index);
+    Duration duration = hourDifferences.values.elementAt(index);
     String prefix = duration.isNegative ? "" : "+";
     return Text(
-      prefix + getHoursAndMinutes(duration, short: true),
+      prefix + getHoursAndMinutes(duration),
       style: Theme.of(context).textTheme.bodyMedium,
     );
   }
 
   List<BarChartGroupData> getBarGroups(Color color) {
-    return workingHours.values
+    return hourDifferences.values
         .mapIndexed((index, duration) => BarChartGroupData(
               x: index,
               barRods: [
@@ -52,7 +52,7 @@ class ColumnChart extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      workingHours.keys.elementAt(index.toInt()),
+                      hourDifferences.keys.elementAt(index.toInt()),
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     const SizedBox(

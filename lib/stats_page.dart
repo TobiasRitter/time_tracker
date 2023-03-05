@@ -7,6 +7,7 @@ import 'package:time_tracker/nav_bar.dart';
 class StatsPage extends StatelessWidget {
   final bool running;
   final Map<String, Duration> workingHours;
+  final Duration goal = const Duration(hours: 8);
 
   const StatsPage({
     super.key,
@@ -16,6 +17,9 @@ class StatsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Map<String, Duration> hourDifferences =
+        workingHours.map((key, value) => MapEntry(key, value - goal));
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -37,7 +41,7 @@ class StatsPage extends StatelessWidget {
               child: Column(children: [
                 Expanded(
                   flex: 2,
-                  child: ColumnChart(workingHours: workingHours),
+                  child: ColumnChart(hourDifferences: hourDifferences),
                 ),
                 const HeroDivider(),
                 Expanded(
