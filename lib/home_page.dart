@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:time_tracker/hero_divider.dart';
 import 'package:time_tracker/nav_bar.dart';
 import 'package:time_tracker/records_page.dart';
 import 'package:time_tracker/session_info.dart';
+import 'package:time_tracker/skeleton.dart';
 import 'package:time_tracker/stats_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   late Animation<double> _animation;
   late AnimationController _animationController;
   DateTime? start;
-  late DateTime current;
+  DateTime current = DateTime.now();
 
   void _toggleRunning() => setState(
         () {
@@ -67,77 +67,77 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(32.0),
-            child: Column(
-              children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Expanded(
-                        child: FittedBox(
-                          child: SizedBox(
-                            width: 84,
-                            child: Text(
-                              "01:53",
-                              style: Theme.of(context).textTheme.headlineMedium,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+            child: Skeleton(
+              upper: const TotalTime(),
+              lower: SessionInfo(
+                current: current,
+                start: start,
+              ),
+              navBar: NavBar(
+                running: start != null,
+                left: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => RecordsPage(
+                      running: start != null,
+                    ),
                   ),
                 ),
-                const HeroDivider(),
-                Expanded(
-                    child: Column(
-                  children: [
-                    SessionInfo(
-                      start: start,
-                      current: current,
-                    ),
-                  ],
-                )),
-                NavBar(
-                  running: start != null,
-                  left: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => RecordsPage(
-                        running: start != null,
-                      ),
+                middle: _toggleRunning,
+                right: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => StatsPage(
+                      running: start != null,
+                      workingHours: const {
+                        "Mo": Duration(hours: 9),
+                        "Tu": Duration(hours: 9, minutes: 30),
+                        "We": Duration(hours: 8, minutes: 30),
+                        "Th": Duration(hours: 7),
+                        "Fr": Duration(hours: 7, minutes: 30),
+                      },
                     ),
                   ),
-                  middle: _toggleRunning,
-                  right: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => StatsPage(
-                        running: start != null,
-                        workingHours: const {
-                          "Mo": Duration(hours: 9),
-                          "Tu": Duration(hours: 9, minutes: 30),
-                          "We": Duration(hours: 8, minutes: 30),
-                          "Th": Duration(hours: 7),
-                          "Fr": Duration(hours: 7, minutes: 30),
-                        },
-                      ),
-                    ),
-                  ),
-                  iconLeft: Icons.calendar_month,
-                  iconMiddle: AnimatedIcon(
-                    icon: AnimatedIcons.play_pause,
-                    progress: _animation,
-                  ),
-                  iconRight: Icons.bar_chart,
-                  labelLeft: "Records",
-                  labelRight: "Stats",
                 ),
-              ],
+                iconLeft: Icons.calendar_month,
+                iconMiddle: AnimatedIcon(
+                  icon: AnimatedIcons.play_pause,
+                  progress: _animation,
+                ),
+                iconRight: Icons.bar_chart,
+                labelLeft: "Records",
+                labelRight: "Stats",
+              ),
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+class TotalTime extends StatelessWidget {
+  const TotalTime({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Expanded(
+          child: FittedBox(
+            child: SizedBox(
+              width: 84,
+              child: Text(
+                "01:53",
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
