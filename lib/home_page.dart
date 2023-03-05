@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:time_tracker/hero_divider.dart';
 import 'package:time_tracker/nav_bar.dart';
@@ -15,19 +17,20 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   late Animation<double> _animation;
   late AnimationController _animationController;
-  bool _running = false;
+  DateTime? start;
+  late DateTime current;
 
-  void _toggleRunning() {
-    setState(() {
-      if (_running) {
-        _animationController.reverse();
-      } else {
-        _animationController.forward();
-      }
-
-      _running = !_running;
-    });
-  }
+  void _toggleRunning() => setState(
+        () {
+          if (start != null) {
+            _animationController.reverse();
+            start = null;
+          } else {
+            _animationController.forward();
+            start = DateTime.now();
+          }
+        },
+      );
 
   @override
   void initState() {
@@ -38,6 +41,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
     _animation =
         CurvedAnimation(curve: Curves.linear, parent: _animationController);
+    Timer.periodic(
+      const Duration(seconds: 1),
+      (Timer t) => setState(() => current = DateTime.now()),
+    );
   }
 
   @override
@@ -50,7 +57,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              _running
+              start != null
                   ? Theme.of(context).colorScheme.secondary.withAlpha(150)
                   : Theme.of(context).colorScheme.primary.withAlpha(75),
               Colors.transparent,
@@ -86,17 +93,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     child: Column(
                   children: [
                     SessionInfo(
-                      running: _running,
+                      start: start,
+                      current: current,
                     ),
                   ],
                 )),
                 NavBar(
-                  running: _running,
+                  running: start != null,
                   left: () => Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => RecordsPage(
-                        running: _running,
+                        running: start != null,
                       ),
                     ),
                   ),
@@ -105,16 +113,23 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     context,
                     MaterialPageRoute(
                       builder: (context) => StatsPage(
-                        running: _running,
+                        running: start != null,
+                        workingHours: const {
+                          "Mo": Duration(hours: 8),
+                          "Tu": Duration(hours: 8, minutes: 30),
+                          "We": Duration(hours: 7, minutes: 30),
+                          "Th": Duration(hours: 6),
+                          "Fr": Duration(hours: 6, minutes: 30),
+                        },
                       ),
                     ),
                   ),
-                  iconLeft: Icons.calendar_month_outlined,
+                  iconLeft: Icons.calendar_month,
                   iconMiddle: AnimatedIcon(
                     icon: AnimatedIcons.play_pause,
                     progress: _animation,
                   ),
-                  iconRight: Icons.bar_chart_outlined,
+                  iconRight: Icons.bar_chart,
                   labelLeft: "Records",
                   labelRight: "Stats",
                 ),

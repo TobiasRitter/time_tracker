@@ -1,26 +1,32 @@
 import 'package:collection/collection.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:time_tracker/utils.dart';
 
 class ColumnChart extends StatelessWidget {
-  final Map<String, double> values;
+  final Map<String, Duration> workingHours;
 
-  const ColumnChart({super.key, required this.values});
+  const ColumnChart({super.key, required this.workingHours});
 
   Text getDiffText(BuildContext context, int index) {
-    double value = values.values.elementAt(index);
-    String prefix = value > 0 ? "+" : "";
+    Duration duration = workingHours.values.elementAt(index);
+    String prefix = duration.isNegative ? "" : "+";
     return Text(
-      prefix + value.toString(),
+      prefix + getHoursAndMinutes(duration, short: true),
       style: Theme.of(context).textTheme.bodyMedium,
     );
   }
 
   List<BarChartGroupData> getBarGroups(Color color) {
-    return values.values
-        .mapIndexed((index, value) => BarChartGroupData(
+    return workingHours.values
+        .mapIndexed((index, duration) => BarChartGroupData(
               x: index,
-              barRods: [BarChartRodData(toY: value, color: color, width: 32.0)],
+              barRods: [
+                BarChartRodData(
+                    toY: duration.inMinutes.toDouble(),
+                    color: color,
+                    width: 32.0)
+              ],
             ))
         .toList();
   }
@@ -46,7 +52,7 @@ class ColumnChart extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      values.keys.elementAt(index.toInt()),
+                      workingHours.keys.elementAt(index.toInt()),
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     const SizedBox(

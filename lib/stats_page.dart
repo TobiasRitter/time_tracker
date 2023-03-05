@@ -6,8 +6,13 @@ import 'package:time_tracker/nav_bar.dart';
 
 class StatsPage extends StatelessWidget {
   final bool running;
+  final Map<String, Duration> workingHours;
 
-  const StatsPage({super.key, required this.running});
+  const StatsPage({
+    super.key,
+    required this.running,
+    required this.workingHours,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,17 +35,9 @@ class StatsPage extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(32.0),
               child: Column(children: [
-                const Expanded(
+                Expanded(
                   flex: 2,
-                  child: ColumnChart(
-                    values: {
-                      "Mo": 1.0,
-                      "Tu": 1.5,
-                      "We": 0.5,
-                      "Th": -1.0,
-                      "Fr": -0.5
-                    },
-                  ),
+                  child: ColumnChart(workingHours: workingHours),
                 ),
                 const HeroDivider(),
                 Expanded(
@@ -69,7 +66,7 @@ class StatsPage extends StatelessWidget {
                   left: () => Navigator.pop(context),
                   middle: () {},
                   iconLeft: Icons.arrow_back,
-                  iconMiddle: const Icon(Icons.share),
+                  iconMiddle: const Icon(Icons.settings),
                   labelLeft: "Back",
                 ),
               ]),
