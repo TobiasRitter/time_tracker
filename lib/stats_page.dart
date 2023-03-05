@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:time_tracker/balance_entry.dart';
 import 'package:time_tracker/column_chart.dart';
+import 'package:time_tracker/fading_list_view.dart';
 import 'package:time_tracker/nav_bar.dart';
 import 'package:time_tracker/skeleton.dart';
 
@@ -28,8 +29,8 @@ class StatsPage extends StatelessWidget {
       iconMiddle: const Icon(Icons.settings),
       labelLeft: "Back",
     );
-    var balances = Column(
-      children: const [
+    var balances = const FadingListView(
+      children: [
         BalanceEntry(
           title: "Week",
           icon: Icons.calendar_today,

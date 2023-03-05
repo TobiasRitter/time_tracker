@@ -26,7 +26,10 @@ class Skeleton extends StatelessWidget {
         Expanded(
           child: lower,
         ),
-        navBar
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxHeight: 150.0),
+          child: navBar,
+        )
       ],
     );
   }
