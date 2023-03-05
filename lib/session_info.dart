@@ -32,17 +32,13 @@ class SessionInfo extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: 16.0),
                         child: Icon(Icons.timer_outlined),
                       ),
-                      AnimatedOpacity(
-                        opacity: start != null ? 1.0 : 0.5,
-                        duration: const Duration(milliseconds: 200),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: Text(
-                            start != null
-                                ? DateFormat("hh:mm").format(start!)
-                                : "--:--",
-                            style: Theme.of(context).textTheme.headlineMedium,
-                          ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Text(
+                          start != null
+                              ? DateFormat("hh:mm").format(start!)
+                              : "--:--",
+                          style: Theme.of(context).textTheme.headlineMedium,
                         ),
                       ),
                       AnimatedSize(
@@ -50,7 +46,8 @@ class SessionInfo extends StatelessWidget {
                         child: SizedBox(
                           width: start != null ? null : 0.0,
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 16.0),
                             child: Text(
                               duration,
                               maxLines: 1,
