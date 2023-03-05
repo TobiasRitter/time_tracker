@@ -19,12 +19,7 @@ class Skeleton extends StatelessWidget {
     return Column(
       children: <Widget>[
         Expanded(
-          flex: 2,
-          child: upper,
-        ),
-        const HeroDivider(),
-        Expanded(
-          child: lower,
+          child: FlexContainer(first: upper, second: lower),
         ),
         ConstrainedBox(
           constraints: const BoxConstraints(maxHeight: 150.0),
@@ -32,5 +27,48 @@ class Skeleton extends StatelessWidget {
         )
       ],
     );
+  }
+}
+
+class FlexContainer extends StatelessWidget {
+  const FlexContainer({
+    super.key,
+    required this.first,
+    required this.second,
+  });
+
+  final Widget first;
+  final Widget second;
+
+  @override
+  Widget build(BuildContext context) {
+    Column verticalLayout = Column(
+      children: [
+        Expanded(
+          flex: 2,
+          child: first,
+        ),
+        const HeroDivider(),
+        Expanded(
+          child: second,
+        ),
+      ],
+    );
+    Row horizontalLayout = Row(
+      children: [
+        Expanded(
+          flex: 2,
+          child: first,
+        ),
+        const VerticalHeroDivider(),
+        Expanded(
+          child: second,
+        ),
+      ],
+    );
+    Size screenSize = MediaQuery.of(context).size;
+    return screenSize.width > screenSize.height
+        ? horizontalLayout
+        : verticalLayout;
   }
 }

@@ -14,3 +14,18 @@ class HeroDivider extends StatelessWidget {
     );
   }
 }
+
+class VerticalHeroDivider extends StatelessWidget {
+  const VerticalHeroDivider({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Hero(
+      tag: "divider",
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        child: VerticalDivider(),
+      ),
+    );
+  }
+}
