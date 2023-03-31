@@ -16,13 +16,17 @@ class Skeleton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double maxHeight = MediaQuery.of(context).size.height / 5;
+
     return Column(
       children: <Widget>[
         Expanded(
           child: FlexContainer(first: upper, second: lower),
         ),
         ConstrainedBox(
-          constraints: const BoxConstraints(maxHeight: 150.0),
+          constraints: BoxConstraints(
+            maxHeight: maxHeight,
+          ),
           child: navBar,
         )
       ],
