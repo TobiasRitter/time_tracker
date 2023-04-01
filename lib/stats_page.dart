@@ -32,7 +32,12 @@ class StatsPage extends StatelessWidget {
     var balances = const FadingListView(
       children: [
         BalanceEntry(
-          title: "Month",
+          title: "This Week",
+          icon: Icons.calendar_today,
+          duration: Duration(hours: 1, minutes: 45),
+        ),
+        BalanceEntry(
+          title: "This Month",
           icon: Icons.calendar_month,
           duration: Duration(hours: 2, minutes: 40),
         ),
